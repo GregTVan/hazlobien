@@ -1,0 +1,254 @@
+﻿
+/*                                                                          */
+/* NOTICE:                                                                  */
+/*    To support more than one-single FlexMenu server control per page      */
+/*    the CSS files' name is used as a class and is prefixed to all of      */
+/*    the selectors (without the path or extension).                        */
+/*                                                                          */
+/*    The server control will automatically wrap the entire FlexMenu        */
+/*    within a div-tag, whose class-name will be derived from the filename. */
+/*                                                                          */
+/*    *** THESE MUST BE ENTIRELY IN LOWER CASE! ***                         */
+/*    The server control will cast these filenames to lower before use!     */
+/*                                                                          */
+/*    Only the base ASCII character set is supported.                       */
+/*                                                                          */
+/*    Also, spaces and periods before the extension will be converted       */
+/*    into underscores, as these are not permitted within the selector.     */
+/*   */    
+
+/* .slaveflyout ul, .slaveflyout li, #menu .slaveflyout li.ekflexmenu_submenu, .slaveflyout LI.ekflexmenu_menu_level_0
+{
+    overflow:auto;
+    zoom:1 !important;
+    width:100%;
+    margin:0px;
+    padding:0px;
+    vertical-align:bottom;
+}
+*/
+                                                              
+#menu li ul li ul li a
+{
+    font-size:14px;  /* Vikram : Adjusting font size from 11 to 14 */
+	color:#005395;
+	text-decoration:none;
+	display:block;
+	border-top:1px solid #e0eaf0;
+	padding:8px 0 8px 11px;
+	vertical-align:bottom;
+	width:193px;
+	zoom:1;
+	background-image:url(/images/menu/arrow.gif);
+	background-position:2px 12px;
+	background-repeat:no-repeat;
+}
+
+#menu li ul li ul li ul li a
+{
+    font-size:14px;  /* Vikram : Adjusting font size from 10 to 14 */
+    background-image:none;
+	background-position:18px 6px;	
+	border-top:none;
+	padding:2px 0 6px 24px;
+	width:180px;
+}
+
+#menu li ul li ul li ul li a.ekflexmenu_link_selected
+{
+    background-image:url(/images/menu/green-arrow.gif);
+	border-top:none;
+}
+
+.slaveflyout .ekflexmenu
+{
+    /* DIV; wraps the entire menu */ /* (the outer-most non-user container element) */ /*color: rgb(255, 255, 255);*/ /*width: 185px;  can be overridden in the primary div-containers (whose class = ekflexmenu) style */
+    font-family: 'Open Sans', sans-serif;    
+    font-size:14px;
+    /*background: rgb(100,100,150);  shows up on left side, widens with nesting level */ /*border: 1px solid #bebebe;*/
+    font-weight: normal;
+    padding: 0px;
+}
+
+.slaveflyout .ekflexmenu_submenu, .slaveflyout .ekflexmenu_submenu_hover, .slaveflyout .ekflexmenu_submenu_parent, .slaveflyout .ekflexmenu_submenu_parent_hover
+{
+    /* DIV; holds submenu items, such as a submenu title and links. */
+    top: 0px;
+    left: 0px;
+}
+
+.slaveflyout UL
+{
+    /* UL; a container for menu list items (useful for non-graphical browsers). */
+    /* list-style: none; */
+    list-style-type:none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.slaveflyout LI
+{
+    /* LI; container for menu items (typically either links or sub-menus). */ /*display:inline;*/
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+    list-style-type:none;
+}
+
+.slaveflyout .ekflexmenu_submenu_items
+{
+    /* DIV; container for menu lists. */ /*border-bottom: solid 2px rgb(71, 71, 71);*/
+    top: 0px;
+    left: 0px;
+    /*clear: left;*/
+}
+
+/*.slaveflyout .ekflexmenu_menu_level_2 .ekflexmenu_submenu_items*/
+.slaveflyout LI.ekflexmenu_startlevel
+{
+    /*display: block;*/
+    /*float:left;*/
+    top: 0;
+    left: 0px;
+    width: 100%;
+}
+
+.slaveflyout .ekflexmenu_startlevel UL
+{
+    top: 0px;
+    left: 0%;
+    width: 100%;
+}
+
+/* Button menu items, controls visibility of associated sub-menus */
+.slaveflyout .ekflexmenu_button
+{
+    /*padding-top: 5px; background: #c6c6c5; */ /* url(ek_menu_ex__btnWorkareaBlueVista.jpg) repeat-x;color specified in case image unavailable */
+    background-image: url(/images/menu/arrow.gif);
+    background-position: 2px 12px;
+    background-repeat: no-repeat;
+    border-top: 1px solid #E0EAF0;
+    color: #005395;
+    display: block;
+    padding: 8px 0 8px 11px;
+    text-decoration: none;
+    vertical-align: bottom;
+    width: 194px;
+}
+
+.slaveflyout .ekflexmenu_button_hover
+{
+    background-image: url(/images/menu/arrow.gif);
+    background-position: 2px 12px;
+    background-repeat: no-repeat;
+    border-top: 1px solid #E0EAF0;
+    color: #009DD7;
+    display: block;
+    padding: 8px 0 8px 11px;
+    text-decoration: none;
+    vertical-align: bottom;
+    width: 194px;
+}
+
+.slaveflyout .ekflexmenu_button_selected, .slaveflyout .ekflexmenu_button_selected_hover
+{
+    /* A; holds the title of the associated submenu, and typically acts as a */ /* button (or folder) for the submenu. Can also hold images (background, etc). */
+    display: block;
+    padding: 5px 0px;
+    font-weight: bold;
+    color: #000000;
+    /*background: #c6c6c5; /*url(ek_menu_ex__btnWorkareaBlueVista.jpg) repeat-x; color specified in case image unavailable */
+    /*text-indent: 10px;*/
+    width: 100%; /* capture on-click for entire row that the button occupies */
+    text-decoration: none;
+}
+
+.slaveflyout .ekflexmenu_submenu_items_hidden
+{
+    /* DIV; normally hidden container for menu lists (becomes visible if */ /* user clicks on related submenu button, or if Javascript/CSS not supported). */
+    display: none;
+}
+
+.slaveflyout .ekflexmenu_button:focus
+{
+    background: transparent;
+} 
+.slaveflyout .ekflexmenu_button_selected
+{
+    background: transparent; 
+}
+.slaveflyout .ekflexmenu_button_selected_hover
+{
+    background: transparent; 
+}
+
+.slaveflyout img
+{
+    border-width: 0px; /* make all images borderless */
+}
+
+
+
+/* Link menu items */
+.slaveflyout .ekflexmenu_link
+{
+    display: block;
+}
+
+
+.slaveflyout a.ekflexmenu_link
+{
+    background-image: url(/images/menu/arrow.gif);
+    background-position: 2px 12px;
+    background-repeat: no-repeat;
+    border-top: 1px solid #E0EAF0;
+    color: #005395;
+    display: block;
+    padding: 8px 0 8px 11px;
+    text-decoration: none;
+    vertical-align: bottom;
+}
+
+.slaveflyout a.ekflexmenu_link_selected
+{
+    /* A; selected version of ekflexmenu_link, see above... */
+    background-image: url(/images/menu/arrow-active.gif);
+    background-position: 2px 12px;
+    background-repeat: no-repeat;
+    border-top: 1px solid #E0EAF0;
+    color: #005395;
+    display: block;
+    padding: 8px 0 8px 11px;
+    text-decoration: none;
+    vertical-align: bottom;
+    font-weight: bold;
+}
+.slaveflyout a.ekflexmenu_link_selected:hover
+{
+    /* A; selected and hovered version of ekflexmenu_link, see above... */
+    color: #009DD7;
+}
+
+.slaveflyout a.ekflexmenu_link:link
+{
+}
+
+.slaveflyout a.ekflexmenu_link:visited
+{
+    /* A; link for individual menu items (CMS quicklink, external link, etc.). */
+    background-color: transparent;
+}
+
+/*.ekflexmenu_submenu_items a:hover */
+.slaveflyout a.ekflexmenu_link:hover, .slaveflyout a.ekflexmenu_link:active, .slaveflyout a.ekflexmenu_link:focus
+{
+    /* A; hovered version of ekflexmenu_link, see above... */
+    color: #009DD7;
+    text-decoration: none;
+}
+
+.ekflexmenu_menu_level_2 UL.ekflexmenu_submenu_items LI a.ekflexmenu_link
+{
+    background-color: transparent;
+    color: #000000;
+}

@@ -1,0 +1,43 @@
+<div ng-controller='insiderDetailController'>
+
+    <div class='col-lg-8'>
+        <h1 translate>APP.INSIDER_DETAIL.TITLE</h1>
+        <div class='row'>&nbsp</div>
+        <div class='row col-lg-offset-1'>
+            {{data.lastName}}, {{data.firstName}}
+        </div>
+        <div class='row col-lg-offset-1'>
+            {{data.municipality}} {{data.province}} {{data.country}}
+        </div>
+        <div class='row'>&nbsp</div>
+        <div class='row'>&nbsp</div>
+    </div>
+    
+    <br><br>
+
+    <div class='col-lg-12'>
+        <table class='table table-hover'>
+            <tr>
+                <th translate>APP.INSIDER_DETAIL.ISSUER</th>
+                <th translate>APP.INSIDER_DETAIL.NAME</th>
+                <th translate>APP.INSIDER_DETAIL.RELATIONSHIP</th>
+                <th translate>APP.INSIDER_DETAIL.BECAME_INSIDER</th>
+                <th translate>APP.INSIDER_DETAIL.OPENING_DATE</th>
+                <th translate>APP.INSIDER_DETAIL.CEASED_BEING</th>
+                <th translate>APP.INSIDER_DETAIL.HOLDERS</th>
+            </tr>
+            <tbody>
+                <tr ng-repeat="d in data.alInsiderIssuerDetailResultDTO">
+                    <td>{{d.issuerNumber}}</td>
+                    <td>{{d.issuerName}}</td>
+                    <td ng-bind-html="d.insiderRelationshipToIssuer"></td>
+                    <td>{{d.dateInsiderBecameInsider}}
+                    <td>{{d.dateOfOpeningBalance}}</td>
+                    <td>{{d.dateInsiderCeasedToBeInsider}}</td>
+                    <td ng-bind-html='d.registeredHolders'></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

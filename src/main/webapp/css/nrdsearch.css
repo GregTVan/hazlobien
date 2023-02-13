@@ -1,0 +1,748 @@
+body, h3 
+{ 
+    padding:0; margin:0; 
+    /*font:normal 11px Verdana, Arial, Helvetica, sans-serif; */
+    font-family: 'Open Sans', sans-serif;    
+    font-size:14px;
+    color:#000000; 
+
+}
+body { background: #fff none !important}
+a:link, a:visited{ text-decoration:underline; color:#0000CC;}
+a:hover{text-decoration:none;}
+
+.title, h1 
+{
+	/*font-family:Verdana, Arial, Helvetica, sans-serif;*/
+    font-family: 'Open Sans', sans-serif;    
+	font-size:16px;
+	font-weight:bold;
+	/*text-transform:uppercase;*/
+	color:#0050a5;
+}
+
+form { margin: 0; padding: 0; }
+
+.listtable td 
+{
+	padding:2px 0;
+}
+
+.tableheader 
+{
+	background-color:#0050a5;
+	color:#ffffff;
+	font-size:11px;
+	font-weight:bold;
+}
+
+.alterrow 
+{
+	background-color:#cccccc;
+}
+
+.disciplined-item th
+{
+	text-align:left;
+	padding-right: 5px;
+}
+
+.headerrow {
+	background-color: black;
+	color: white;
+	font-weight: bolder;
+	padding: 3px;
+	margin: 20px 0 10px 0;
+}
+.RedText
+{
+	color:red;
+}
+
+.detail-title .catrow th, .detail-title .catrow td
+{
+    border:0;
+}
+
+.detail-title .inner td
+{
+    border:0;
+    padding-left:8px;
+}
+
+/**********************\
+  Standard Table with header type
+\**********************/
+.ProgrammingNotes 
+{
+	width:100%;
+	border-collapse:collapse;
+	border:#000000 1px solid;
+	background-color:#FFEAEA;
+	padding:10px;
+	margin:10px;
+}
+
+.ProgrammingNotes td
+{
+	padding:3px;
+	vertical-align:top;
+	padding-left:10px;
+}
+
+
+.ProgrammingNotes textarea
+{
+	width:400px;
+}
+
+/**********************\
+  Standard Table with header type
+\**********************/
+.BasicTable 
+{
+	width:100%;
+	border-collapse:collapse;
+	border:none;
+	padding:0px;
+	margin:0px;
+}
+
+.BasicTable td
+{
+	padding:3px;
+	vertical-align:top;
+	padding-left:10px;
+}
+
+.BasicTable th
+{
+	background: #195589;
+	color:White;
+	font-weight:bold;
+	text-align:left;
+	padding:3px;
+	padding-left:10px;
+}
+
+.BasicTable textarea
+{
+	width:400px;
+}
+
+.BasicTable .SecondHeaderRow
+{
+	background:#E2E2E2;
+	color:Black;
+	font-weight:bold;
+	text-align:left;
+	padding:3px;
+	padding-left:10px;
+}
+
+
+/************ tags ***************/
+#tagdivs {
+	bottom: 0px;
+	left: 0px;
+	width: 481px;
+	height:30px;
+	margin:0; padding:0;
+	padding-top:10px;	        
+}
+	
+#tagdivs li {
+	display:inline;
+	padding:0; margin:0; 
+}
+
+#tagdivs li a 
+{
+	padding-top:7px;
+	height: 21px;
+	display:block;
+	float: left;
+	text-align:center;
+	color:#fff;
+	font-weight:bold;
+	text-decoration:none;
+	background-color:#0050A5; 
+	margin-right: 6px;
+}
+
+#tagdivs li a:hover 
+{
+	background-color:#556269;
+}
+
+#tagdivs li a.selected
+{
+	background-color:#556269;
+}
+
+	#tagdivs li a.selected {
+	}
+
+	#tag_addfolder a { width:160px; }
+	#tag_addfile a { width:115px;}
+	#tag_addpermission a { width:160px;}
+	
+.groupoptions 
+{
+	background-color: #FBFBF6;
+	border: 1px dashed #BABBAF;
+	padding:2px 0;
+}
+
+.optionpadding 
+{
+	padding-left:6px;
+}
+
+/*************\
+
+  Date Widget
+
+\*************/
+.date
+{
+	font-size:12px;
+	width:160px;
+}
+
+#datewidget_calendar
+{
+	background: #FFF;
+	border: 2px solid #DBDDDC;
+	padding: 4px;
+}
+
+#datewidget_calendar table
+{
+	background: #043560 url(/images/motdbkg.png) top left repeat-x;
+	border-collapse: collapse;
+	border: 1px solid #043560;
+	border-top: none;
+}
+
+#datewidget_calendar thead th
+{
+	color: #FFF;
+	font-weight: bold;
+	text-align: center;
+	padding: 1px 0;
+}
+#datewidget_calendar thead tr a
+{
+	color: #FFF;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#datewidget_calendar thead tr a:hover
+{
+	color: #000;
+}
+
+#datewidget_calendar tbody td
+{
+	border: 1px solid #043560;
+	background: #DBDDDC;
+}
+#datewidget_calendar tbody th
+{
+	border: none;
+	background: #A5DDE6 url(/images/infobkg.gif) top left repeat-x;
+	padding: 1px;
+	text-align: center;
+	color: #FFF;
+}
+#datewidget_calendar tbody td a
+{
+	background: #FFF;
+	display: block;
+	zoom: 1;
+	color: #333;
+	text-decoration: none;
+	padding: 1px;
+}
+#datewidget_calendar tbody td a:hover
+{
+	color: #FFF;
+	background: #333;
+}	
+
+
+/************pager ***********/
+a.linkpagers
+{
+	font-family: 'Open Sans', sans-serif;    
+	font-size:14px;
+	/*color: #666666;*/
+	text-decoration: underline;
+	padding:0px 2px;
+    text-decoration:none;
+}
+
+a.linkpagers:hover
+{	
+    font-family: 'Open Sans', sans-serif;    
+	font-size:14px;
+    text-decoration: none;
+    cursor:pointer;
+}
+
+a.linkpagerSelected
+{
+	/*font-family: Verdana;*/
+    font-family: 'Open Sans', sans-serif;    
+	font-size: 12px;
+	/*color: #a2243c;*/
+	font-weight: bold;
+	padding:0px 2px;
+	text-decoration:none;
+}
+
+.searchtable td
+{
+	padding: 3px 0;
+}
+
+#content td.RowHeader
+{
+	background-color:#E0EAF0;
+	color:#005395;
+}
+
+.controlstyle 
+{
+ 	font-size:14px;  /* Vikram - changed from 12 to 14px */
+    color:#36454D;
+    height:23px;
+    padding-left:6px;
+}
+
+#content a.backarrow 
+{
+	padding-left:15px;
+	padding-right:4px;
+	font-size:10px;
+	color:#606060;
+	/*width:85px;*/
+	text-decoration: none;
+	background: transparent url(/images/disciplinedlist/left-arrow.gif) 9px 6px no-repeat;
+	display:block;
+}
+
+#content a.toparrow 
+{
+	padding-left:6px;
+	padding-right:15px;
+	font-size:10px;
+	color:#606060;
+	text-decoration: none;
+	background: transparent url(/images/disciplinedlist/up-arrow.gif) 30px 5px no-repeat;
+}
+#content a.toparrow1 
+{
+	padding-left:6px;
+	padding-right:15px;
+	font-size:10px;
+	color:#606060;
+	text-decoration: none;
+}
+
+
+#content a.backarrow:hover, #content a.toparrow:hover 
+{
+	text-decoration: none;
+	color:#606060;
+}
+
+#pageUtil
+{
+	position: absolute;
+	top: -50px; right:40px;
+}
+
+#pageUtil li
+{
+	list-style:none;
+	margin-bottom:3px;
+}
+
+#pageUtil li#util_print
+{
+	background:transparent url(/images/icon_print.gif) 0 4px no-repeat;
+}
+
+#pageUtil li.util_expandall
+{
+	background:transparent url(/images/expandAll.png) 0 4px no-repeat;
+}
+
+#pageUtil li.util_collapseall
+{
+	background:transparent url(/images/collapseAll.png) 0 4px no-repeat;
+}
+
+#pageUtil li#util_email
+{
+	background:transparent url(/images/icon_email.gif) 0 6px no-repeat;
+}
+
+#pageUtil li a
+{
+	padding-left:20px;
+	text-decoration: none;
+}
+
+#pageUtil li a:hover
+{
+	text-decoration:underline;
+}
+
+#content-inner
+{
+    position:relative;
+}
+
+.explanationtable
+{
+    border-collapse:collapse;
+    border: 0px solid black;
+    /*padding: 10px 10px 0px 15px;*/
+}
+
+
+/* Our own CSA Accordion for toggle slide down/up Expand Collapse divs */
+/*Current Registrations*/
+.csaAccordion {
+    font-family: 'Open Sans', sans-serif;    
+	font-size:14px;
+}
+.csaAccordionCurrent {    
+    border:1px solid #ededed;
+    margin-bottom:10px;
+    background-color:white;    
+    overflow:hidden;   
+}
+.csaAccordionCurrent .imgRegistrationExpand {
+    z-index:4444;
+    float: right; margin-right: 15px;  /*position:absolute;left:640px;*/
+    background:url('/images/expand.png') no-repeat right center;            
+    min-width:24px;min-height:24px;            
+    margin-top:5px;
+    cursor:pointer;
+}
+.csaAccordionCurrent .imgRegistrationCollapse {
+    z-index:4444;
+    float: right; margin-right: 15px;  /*position:absolute;left:640px;*/
+    background:url('/images/collapse.png') no-repeat right center;            
+    min-width:24px;min-height:24px;            
+    margin-top:5px;
+    cursor:pointer;
+}
+
+.csaAccordionCurrent .current-content {
+    background-color:#ECEED2;        
+    padding-left:10px;padding-right:10px;padding-bottom:5px;
+}
+.csaAccordionCurrent .province {
+    background-color:#eceed7;  /*#ecf6ef;*/
+    margin:10px;
+    color:#36454D;
+}
+.csaAccordionCurrent .imgProvinceExpand {
+    z-index:4444;
+    float: right; margin-right: 15px;  /*position:absolute;left:640px;*/ 
+    background:url('/images/expand.png') no-repeat right center;        
+    min-width:24px;min-height:24px;       
+    margin-top:10px;     
+    cursor:pointer;
+}
+.csaAccordionCurrent .imgProvinceCollapse {
+    z-index:4444;
+    float: right; margin-right: 15px;  /*position:absolute;left:640px;*/
+    background:url('/images/collapse.png') no-repeat right center;        
+    min-width:24px;min-height:24px;       
+    margin-top:10px;     
+    cursor:pointer;
+}
+
+.csaAccordionCurrent .province .province-name{        
+    padding:10px;
+    font-weight:bold;
+}
+.csaAccordionCurrent .province .province-content{
+    background-color:#f6f6f6;  /*#ededed;*/    
+    padding:10px;
+}
+
+/*Previous Registrations*/
+.csaAccordionPrevious {    
+    border:1px solid #ededed;
+    margin-bottom:10px;   
+    overflow:hidden;    
+}
+.csaAccordionPrevious .imgRegistrationExpand {
+    z-index:4444;
+    float: right; margin-right: 15px;  /*position:absolute;left:640px;*/
+    background:url('/images/expand.png') no-repeat right center;        
+    min-width:24px;min-height:24px;       
+    margin-top:5px;     
+    cursor:pointer;
+}
+.csaAccordionPrevious .imgRegistrationCollapse {
+    z-index:4444;
+    float: right; margin-right: 15px;  /*position:absolute;left:640px;*/
+    background:url('/images/collapse.png') no-repeat right center;        
+    min-width:24px;min-height:24px;       
+    margin-top:5px;     
+    cursor:pointer;
+}
+.csaAccordionPrevious .previous-content {
+    background-color:#A0A0A0;        
+    color:white;
+    padding-left:10px;padding-right:10px;padding-bottom:5px;
+}
+.csaAccordionPrevious .province {
+    background-color:#C0C0C0;   /*  #bdbdbd;#d3d3d3;#E0EAF0;#B0E0E6;*/
+    margin:10px;
+    color:#36454D;
+}
+.csaAccordionPrevious .imgProvinceExpand {
+    z-index:4444;
+     float: right; margin-right: 15px;  /*position:absolute;left:640px;*/
+    background:url('/images/expand.png') no-repeat right center;        
+    min-width:24px;min-height:24px;       
+    margin-top:5px;     
+    cursor:pointer;
+}
+.csaAccordionPrevious .imgProvinceCollapse {
+    z-index:4444;
+    float: right; margin-right: 15px;  /*position:absolute;left:640px;*/
+    background:url('/images/collapse.png') no-repeat right center;        
+    min-width:24px;min-height:24px;       
+    margin-top:5px;
+    cursor:pointer;
+}
+.csaAccordionPrevious .province .province-name{       
+     padding:10px;
+     font-weight:bold;
+     color:#36454D;
+}
+.csaAccordionPrevious .province .province-content{
+    background-color:#f6f6f6;        
+    padding:10px;
+    color:#36454D;
+}
+
+.csaAccordion .registrationConstantText{
+    float:left;
+    margin-left:13px;
+    margin-top:10px;
+}
+
+.csaAccordion .registrationConstantTextWhite{
+    color:white;
+    float:left;
+    margin-left:13px;
+    margin-top:10px;
+}
+
+
+/* DPL popup */
+.csaDPL {
+    font-family: 'Open Sans', sans-serif;    
+	font-size:14px;    
+    margin-bottom:10px;
+    background-color:white;      
+    overflow:auto; max-height:500px;
+}
+
+.csaDPL .jurisdiction {
+    border:1px solid #ededed;
+    background-color:#E0EAFA; 
+    margin:10px;    
+    color:#36454D;overflow:hidden;
+}
+.csaDPL .imgJurisdictionExpand {
+    z-index:4444;
+    position:static;left:200px;
+    background:url('/images/expand.png') no-repeat right bottom;        
+    min-width:24px;min-height:24px;       
+    margin-top:-35px;margin-right:10px;margin-bottom:10px;
+}
+.csaDPL .imgJurisdictionCollapse {
+    z-index:4444;
+    position:static;left:700px;
+    background:url('/images/collapse.png') no-repeat right bottom;        
+    min-width:24px;min-height:24px;       
+    margin-top:-35px;margin-right:10px;margin-bottom:10px;
+}
+.csaDPL .jurisdiction .jurisdiction-name{                
+    padding-left:10px;margin-top:10px;padding-bottom:10px;
+    font-weight:bold;
+}
+.csaDPL .jurisdiction .jurisdiction-content{
+    background-color:#f6f6f6;  
+}
+
+.csaDPL .jurisdiction .jurisdiction-content .rulingName{
+    padding-top:20px;padding-bottom:20px;
+    padding-left:10px;padding-right:10px;
+    color:Black;font-style:italic;
+    vertical-align:top;
+}
+
+.csaDPL .jurisdiction .jurisdiction-content table td.DPLtitle{
+    padding:10px;
+    color:#005395;
+    font-weight:bold;
+    vertical-align:top;
+}
+
+
+/* Table contents for Individual registration under province contents */
+table.province-content-table{
+    width:100%;border:0;padding:10px;text-transform:none; 
+}
+
+.province-content-table td {
+    color:black; 
+    min-width:50%;
+}
+
+td.heading, div.heading,span.heading {
+    color:#005395;
+    font-weight:bold;
+}
+
+td.subheading,span.subheading,div.subheading{
+    color: #005395;
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+hr.nrdsearch {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #E0E0E0;
+    margin: 1em 0;
+    padding: 0; 
+}
+
+/* Terms and Conditions, and DPL dialog popup both with Red and Blue Title */
+
+.lightboxOverlay {
+	display: none;	
+    
+    /*position: absolute;
+	top: 35%;
+	left: 35%;        
+        */
+    position: fixed; 
+    background-color: #00FF00; 
+    top: 50%; 
+    left: 50%; 
+    margin-top: -350px; 
+    margin-left: -350px; 
+    width:750px;
+	padding: 14px;
+	/*border: 1px solid Gray;*/
+	background-color: white;
+	z-index:100002;
+	overflow: auto;
+}
+.lightboxOverlay .header {
+    padding:0;
+    clear:both;
+}
+.lightboxOverlay .contents {        
+    clear:both;
+    margin:0;padding:0;
+}
+.lightboxOverlay .contents table {       
+    /*padding:5px;*/
+    /*border:1px solid Gray;   */
+    margin:0;padding:0;    
+}
+
+.lightboxOverlay .contents table tr {
+    padding:15px;
+    border-top:1px solid black; /*#005395*/
+    border-bottom:1px solid black;   /*#005395*/
+}
+.lightboxOverlay .contents table tr.heading-blue-bg{    
+    background-color:#E0EAF0;
+    border-top:1px solid Gray;
+    border-bottom:1px solid Gray;
+    width:100%;    
+    color:black;         
+}
+
+.lightboxOverlay .contents table tr.border-bottom {
+    border-bottom: 1px solid black; /*#005395*/
+}
+
+    .lightboxOverlay .contents table td {
+        padding:10px;
+    }
+.lightboxOverlay .contents table td .heading{
+     color:#0050A5;
+     font-weight:bold;     
+     width:30%;     
+}
+
+.lightboxOverlay .contents table td.articleText {   
+    color:#35454D;
+    padding-left:10px;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+
+.lightboxOverlay .footer {
+    padding-top:20px;padding-bottom:20px;
+    padding-left:10px;padding-right:10px;
+    clear:both;
+}
+.lightboxOverlay .header .success {    
+    font-size:16px;
+    font-weight:bold;
+    color:#0050A5;
+    text-transform:none;
+    padding-left:5px;    
+}
+.lightboxOverlay .header .error {
+    font-size:16px;
+    font-weight:bold;
+    color:#A81D17;
+    text-transform:none;
+    padding-left:5px;
+}
+/**** ends here *******/
+
+.paddingBottomBig {
+    padding-bottom:20px;
+}
+.noPaddingBottom {
+    padding-bottom:25px;
+}
+
+.regCatEffTermDate {    
+    background-color:#d3d3d3;
+    width:325px;
+    margin-top:10px;
+    margin-bottom:10px;
+    clear:none;
+    padding:5px 15px;
+}
+.regCatEffTermDate-Left {
+    width:150px;float:left;margin-left:10px;
+}
+.regCatEffTermDate-Right {
+    margin-left:75px;
+}

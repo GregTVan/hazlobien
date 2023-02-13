@@ -1,0 +1,77 @@
+<div ng-controller='manageNewsController' collapse-open-listener>
+	<h4 class='panel-title' style='cursor: pointer'>
+		<a translate data-toggle='collapse' data-parent='#accordion' data-target='#{{d.key}}'>{{d.title}}</a>
+	</h4>
+	<div id='{{d.key}}' class='panel-collapse collapse' style='margin-top:20px'>
+		<div class='panel-body'>
+			<span ng-model='showError' ng-show='showError' style='color:red'>
+				{{error}}
+			</span>
+		</div>
+		<div class='col-lg-12'>
+			<br>
+			<div ng-model='showTable' ng-show='showTable'>
+				<div style='margin-bottom:10px'>
+					<button ng-click='setMode("ADD")' translate>APP.GENERAL.ADD</button>
+					<button ng-click='get()' translate>APP.GENERAL.REFRESH</button>
+				</div>
+				<table class='table table-hover'>
+					<tr>
+						<!-- TODO French -->
+						<th>Date</th>
+						<th>Caption</th>
+						<!-- TODO why does it not extend across properly -->
+						<th class='fa fa-paperclip'>
+						<th class='fa fa-edit'>
+						<th class='fa fa-trash'>
+					</tr>
+					<tbody>
+						<tr ng-repeat='d in data'>
+							<td>{{d.addedDate}}</td>
+							<td>{{d.caption}}</td>
+							<td class='fa fa-paperclip' ng-style='setAttachmentIcon($index)'></td>
+							<td class='fa fa-edit' ng-click='setMode("CHANGE", $index)'></td>
+							<td class='fa fa-trash' ng-click='delete($index)'></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div ng-model='showAddForm' ng-show='showAddForm'>
+				<div class='col-md-4'>
+					<select 
+						ng-click='clickContentType()'
+						ng-model='contentType'
+						ng-options='contentType.name for contentType in availableContentTypes'>
+					</select>
+					<span style='margin-left:2vw'>
+						{{modeMessage}}
+					</span>
+					<br>
+					<br>
+					<input class='form-control col-lg-1' class='form-control' type='text' ng-model='addedDateString' placeholder='Date (MM/DD/YYYY format)'>
+					<br>
+					<input class='form-control col-lg-1' class='form-control' type='text' ng-model='caption'   placeholder='Caption (headline)'>
+					<br>
+					<br>
+					<br>				
+					<div ng-model='showTextArea' ng-show='showTextArea'>
+						<textarea class='form-control col-lg-2' ng-model='content' placeholder='Text in HTML format' rows='20'></textarea>
+					</div>
+					<div ng-model='showUploadButton' ng-show='showUploadButton'>
+						<!--<input type='file' file-model='myFile' style='width:400px'/>-->
+						<input type='file' id='files' file-model='myFile' class='hidden' custom-on-change='uploadFile'>
+						<!--<input type='file' id='files' custom-on-change='uploadFile'>-->
+						<!--<input type='file' id='files' class='hidden' onchange='fileNameChanged(this)'/>-->
+						<label for='files' class='label-button'>{{fileUploadLabel}}</label>
+					</div>
+					<br>
+					<br>
+					<button ng-click='postPut()'><div translate>APP.GENERAL.OK</div></button>
+					<button ng-click='setMode("QUERY")'><div translate>APP.GENERAL.CANCEL</div></button>
+					<br>
+					<br>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

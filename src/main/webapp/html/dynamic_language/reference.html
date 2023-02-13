@@ -1,0 +1,43 @@
+<div ng-controller='referenceController'>
+    <div class='col-lg-8 col-lg-offset-1'>
+        <span translate>
+            APP.REFERENCE.INSTRUCTIONS
+        </span>
+        <br>
+        <span translate>
+            APP.REFERENCE.CLICK
+        </span>
+        <a translate href='{{ "APP.REFERENCE.SUMMARY_URL" | translate }}' target='_blank'>
+            APP.REFERENCE.HERE
+        </a>
+        <span translate>
+            APP.REFERENCE.TO_SEE
+        </span>
+        <br>
+        <br>
+        <table class='table'>
+            <tr>
+                <th translate>APP.REFERENCE.COUNTRY</th>
+                <th translate>APP.REFERENCE.REGULATION</th>
+                <!-- could add a column here to link to official version.
+                     could add a count of how many people in the DB are affected by this regulation. 
+                     could launch a query to actually list the people linked to it -->
+            </tr>
+            <tbody>
+                <tr ng-repeat='d in data'>
+                    <td>{{d.country}}</td>
+                    <td>
+                        <div ng-repeat='reg in d.links'>
+							<!-- TODO FR -->
+                            <a href='regulations/{{language}}/{{reg.fileName}}' target='blank'>
+                                <div>
+                                    {{reg.linkText}}
+                                </div>
+                            </a>
+                        <div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

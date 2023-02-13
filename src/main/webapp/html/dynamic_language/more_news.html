@@ -1,0 +1,22 @@
+<div ng-controller='moreNewsController' class='ng-scope'>          
+    <div style='margin-left:10%;margin-right:10%'>
+        <div class='col-lg-12'>
+            <div class='col-lg-8'>
+                <div ng-repeat='d in news'>
+                    <div style='font-size:14px;margin-top:20px'>
+                        {{d.prettyDate}}
+                    </div>
+                    <a ui-sref='news{{d.key}}' style='font-size:27px'>
+                        {{d.caption}}
+                    </a>
+                </div>
+                <a class='canchek-color-bold' style='font-size:14px;margin-top:20px'>
+                    Previous Page
+                </a>
+                <a class='canchek-color-bold' style='font-size:14px;margin-top:20px;margin-left:1vw'>
+                    Next Page
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

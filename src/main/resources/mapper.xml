@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN' 'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='com.hazlobien'>
+
+<!-- 
+https://stackoverflow.com/questions/64133767/how-to-map-string-to-postgresql-array-column-in-mybatis
+<resultMap id="array" type="java.util.Map">
+    <result property="feature" column="feature" typeHandler="org.apache.ibatis.type.ArrayTypeHandler"></result>
+</resultMap>
+
+<select id="selectArrayFeatures" resultMap="array">
+        SELECT feature FROM x LIMIT 1
+    </select>
+    -->
+    
+    <resultMap id="fraseMap" type="com.hazlobien.Frase">
+    	<result property="categories" column="categories" typeHandler="com.hazlobien.StringArrayTypeHandler" jdbcType="ARRAY"/>
+    	<result property="expect" column="expect" typeHandler="com.hazlobien.StringArrayTypeHandler" jdbcType="ARRAY"/>
+	</resultMap>
+	
+    <select id='selectFrases' resultMap="fraseMap">
+        SELECT * FROM frase
+    </select>
+
+	<insert id='insertRespuesta' parameterType='com.hazlobien.Respuesta'>
+		INSERT INTO respuesta (
+			correct,
+			frase_id,
+			en,
+			es,
+			expect,
+			respuesta
+ 		) VALUES (
+ 			#{correct},
+			#{fraseId},
+			#{en},
+			#{es},
+			#{expect},
+			#{respuesta}
+		)
+	</insert>
+
+	<insert id='insertPreferences' parameterType='com.hazlobien.Preferences'>
+		INSERT INTO preferences (
+			categories
+ 		) VALUES (
+			#{categories, javaType=String[], jdbcType=OTHER, typeHandler=com.hazlobien.StringArrayTypeHandler}
+		)
+	</insert>
+
+
+</mapper>

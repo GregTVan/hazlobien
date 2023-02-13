@@ -1,0 +1,83 @@
+<div ng-controller='searchController'>          
+    
+	<div class='col-lg-8 col-lg-offset-2' style='display:block' id='input1' ng-show='!amlDisabled'>
+        <div class='input-group'>
+			<input ng-show='showResolvedItemTracking' type='text' class='form-control' ng-change='searchInputChange()' ng-keypress='searchKeyPress($event)' ng-model='clientId' placeholder='Client or Account Identifier'/>
+			<span ng-show='showResolvedItemTracking' class='input-group-addon'></span>
+            <input type='text' class='form-control' ng-change='searchInputChange()' ng-keypress='searchKeyPress($event)' ng-model='lastName' placeholder='{{ "APP.SEARCH_INPUT.LAST_NAME" | translate }}'/>
+            <span class='input-group-addon'></span>
+            <input type='text' class='form-control' ng-change='searchInputChange()' ng-keypress='searchKeyPress($event)' ng-model='firstName' placeholder='{{ "APP.SEARCH_INPUT.FIRST_NAME" | translate }}'/>
+        </div>
+        <div class='input-group'>
+            <input type='text' class='form-control' ng-change='searchInputChange()' ng-keypress='searchKeyPress($event)' ng-model='entityName' placeholder='{{ "APP.SEARCH_INPUT.ENTITY_NAME" | translate }}'/>
+            <span class='input-group-btn'>
+                <button class='btn btn-default' ng-click='searchClick($event)' translate type='button'>APP.SEARCH_INPUT.SEARCH</button>
+                <button class='btn btn-default' ng-click='resetClick($event)' translate type='button'>APP.SEARCH_INPUT.RESET</button>
+            </span>
+        </div>
+    </div>
+    
+    <div class='col-lg-12'>
+	
+        <div id='search_output' style='overflow:auto'>
+            <br>
+			<div ng-repeat='message in messages track by $index' ng-bind-html='message'/>
+			<div ng-model='printLabel' ng-show='printLabel'>
+				<span>
+                    Click here for
+                </span>
+                <a translate ng-click='printClick("PDF")' href='#'>
+                    PDF
+                </a>
+                <span>
+                    or
+                </span>
+                <a translate ng-click='printClick("Excel")' href='#'>
+                    Excel
+                </a> 			
+			</div>
+			<div ng-repeat='tableDefinition in tableDefinitions track by $index' ng-show='!amlDisabled'>
+				<div ng-show='showTable($index)'>
+					<table class='table table-hover'>
+						<thead>
+							<tr>
+								<th ng-repeat='columns in tableDefinition.columns'>
+									{{columns.label}}
+								</th>
+								<th ng-show='showResolvedItemTracking' translate>
+									False Positive
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat='dataRow in data[tableDefinition.dataset]'>
+								<td ng-repeat='columns in tableDefinition.columns'>
+									<div ng-switch='isArray(dataRow[columns.key])'>
+										<div ng-switch-when='false' ng-bind-html='dataRow[columns.key]'/>
+										<div ng-switch-when='true' ng-repeat='field in dataRow[columns.key] track by $index' ng-bind-html='field'/>
+									</div>
+								</td>
+								<td ng-show='showResolvedItemTracking' style='vertical-align:middle'>
+									<div ng-show='!dataRow.hideFalsePositive' style='border-style:solid;font-size:6vh;border-width:1px;height:6vh;width:6vh;border-radius:.5vh' ng-click='toggleFalsePositive(tableDefinition.dataset, $index)'>
+										<div style='color:green;vertical-align:top' ng-class="{'fa fa-check-square':dataRow.falsePositive}"></div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<button 
+						class='btn'
+						ng-click='moreClick($index)'
+						ng-show='showMoreButton($index)'
+						style='background-color: rgba(86,192,201,.5);color: #75787B;font-family: AvenirLTStd-Heavy;font-size: 16px;width:100%'
+						type='button'>
+						{{moreButtonMessage}}
+					</button>
+				</div>
+			</div>
+
+		</div>
+
+    </div>
+			
+</div>

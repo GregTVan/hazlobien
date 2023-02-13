@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html ng-app='canchek'>
+<head>
+    <meta name='google-site-verification' content='eeyZ4Ypz50eltRf_OY_t86Qkj_zi4ZITBkXp26bXNeI' />
+	<meta name='description' content='Anti-Money Laundering | Plans from $1,200 | Sanctions, PEPs, Adverse Media, NRD, SEDI, CTOs, OFAC | Ad-hoc, Batch Checks | Member PMAC, PCMA. IIAC Partner'>
+    <meta charset='utf-8'/>
+	<title>Canchek®</title>
+	<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+	<style>
+
+		body {
+			font-family: Lato;
+		}
+
+		.alert {
+			color: red;
+			font-weight: bold;
+		}
+
+		.bottom {
+			margin-bottom: 5vh;
+		}
+
+		.center {
+			text-align: center;
+		}
+		
+		.list-space li {
+			margin-top: 2vh;
+		}
+		
+		.margins {
+			margin-left: 15vw;
+			margin-right: 15vw;
+		}
+		
+		.relative {
+			position: relative;
+		}
+		
+		.sign-button {
+			background-color:red;
+			font-size:2vw;
+			font-weight:bold;
+			margin-top: 10vh;
+			transform: translateY(-50%);
+			width:100%;
+			-ms-transform: translateY(-50%);
+		}
+		
+		.top {
+			margin-top: 3vh;
+		}
+		
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+	<script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
+	<script src='../../js/customer_agreement.js'></script>
+</head>
+<body class='margins' ng-app='canchek' ng-controller='customerAgreementController'>	
+
+	<img alt='CanChek' height='100vh' width='110vh' src='../../images/spiral_combined.jpg'>
+	
+	<p class='alert center'>
+		{{error}}
+	</p>
+
+	<p class='center'>
+		<b>AGREEMENT</b>
+	</p>
+
+	<p class='center top'>
+		Electronic Client Identification Service (“Canchek-eID”)
+	</p>
+
+	<div class='center top'>
+		Canchek provides a technology that allows firms to remotely identify their clients as provided for
+		by guidance from the Financial Transactions and Analysis Centre of Canada (FINTRAC).
+	</div>
+
+	<div class='top'>
+		<ol class='list-space'>
+			<li>
+				<b>Canchek-eID. </b>{{customerName}} is licensed to use Canchek-eID for identifying clients according
+				to the provisions of service set out in this online Agreement.
+			</li>
+			<li>
+				<b>Description of Service.</b> The Canchek-eID service includes the following components
+				and functions:
+				<ol type='a'>
+					<li>support for login credentials to Canchek-eID for up to five (5) users</li>
+					<li>the ability to register clients on the Canchek-eID system by entering their name and email address</li>
+					<li>an automated email sent to each registered client that contains a link to the electronic client identification applications (the <b>“Client Technology”</b>) and a unique identification number (PIN)</li>
+					<li>the Client Technology may be utilized on device types as specified by Canchek from time to time (for example: Windows® PCs, Android phones and tablets, Mac® PCs and Apple® phones)</li>
+					<li>the Client Technology guides registered clients through the process of taking a photograph of a government issued document, for example a driver’s licence, and a “selfie”, and the entry of the unique PIN provided to them by email</li>
+					<li>the Client Technology performs the following functions to reasonably determine that the document photographed by each registered client is authentic:
+						<ol type='i'>
+							<li>checks whether the document is of the appropriate format, for example, that an Ontario Driver’s licence has the correct size, character spacing, lettering, and bar code</li>
+							<li>compares the text on the front of the document with the bar code content on the back</li>
+							<li>the face region on the document is analysed to mitigate the potential of a real license image being tampered with to overlay another face</li>
+						</ol>
+					</li>
+					<li>the Client Technology compares the “selfie” to the photograph on the document using facial recognition software and calculates a metric to indicate the degree of certainty that the “selfie” and the document photograph are of the same person</li>
+					<li>the Client Technology performs a “liveness test” to minimize the risk of the client faking or “spoofing” the verification</li>
+					<li>
+						immediately following the registered client’s use of the Client Technology, the following information is available to Customer on the Canchek-eID system: the
+						name on the document, the document type, the document issuer, the document number, the document expiry date, the date the registered client performed the
+						verification, and the confidence metric (e.g., 95% certain of a positive identification), and
+					</li>
+					<li>
+						the ability to offload the information in 2(i) above to a report or upload to another system, for example the Customer’s KYC or portfolio management system, after
+						which the information will be deleted from the Canchek-eID system.
+					</li>
+				</ol>
+			</li>
+			<li>
+				<b>Retention of Client Data.</b> Customer will remove or download the information listed in 2(i). In any case, Customer acknowledges that Canchek will delete the information from
+				the Canchek-eID system seven days following the date the client performed the verification. This Canchek data retention policy is designed to minimize the amount of
+				information stored on the Canchek-eID system in order to protect confidential client information from potential exposure to cybercriminals.
+			</li>
+			<li><b>Consent of Client.</b> Customer shall conform to any applicable laws requiring the prior consent of clients before providing them with access to Client Technology.</li>
+			<li>
+				<b>Approval of Verification.</b> While Canchek shall make commercially reasonable efforts to verify that the client identification performed in paragraph 2 above is authentic and
+				meets FINTRAC’s stated requirements, this in no way relieves the responsibility of the Customer to analyse all available information to determine if the client has been
+				successfully identified. In making this determination, the Customer may take into account the confidence metric provided by the Canchek-eID system, the type of
+				document presented by the client to the Canchek-eID system, and other available information.
+			</li>
+			<li>
+				<b>Term.</b> The term of the Canchek-eID service will commence on the date Customer clicks accept and continue for a period of twelve (12) months (the “First Canchek-eID Term”)
+				after which it will renew automatically for successive one-year periods subject to either party providing the other with notice prior to the expiry of the First Canchek-eID Term, or
+				any renewal term, that it does not wish to renew the service. Canchek shall email Customer a renewal reminder in advance of the renewal date.
+			</li>
+			<li>
+				<b>Fees.</b> The fee for each verification performed by the Canchek-eID system is two dollars and fifty cents ($2.50) provided that the minimum annual fee is two hundred and fifty
+				dollars ($250.00).
+			</li>
+			<li>
+				<b>Payment:</b> Customer shall pay:
+				<ol type='i'>
+					<li>the minimum annual fee within fifteen (15) days following the date Customer clicks accept.</li>
+					<li>for all annual renewal terms (if any) of the Canchek-eID service, the minimum annual fee above on or before the applicable renewal date.</li>
+					<li>the fee for verifications in excess of one hundred (100) in number shall be paid each quarter within 15 days of receipt by Customer of an email from Canchek containing an invoice.</li>
+				</ol>
+			</li>
+		</ol>
+	</div>
+
+	<div>
+		<b>Canchek Corporation</b> agrees to the terms and conditions contained in this online Agreement.
+	</div>
+
+	<div class='bottom top' ng-show='agreementSigned'>
+		<b>{{agreementSignedBy}}</b> on behalf of <b>{{customerName}}</b> agreed to the terms and conditions contained in this online Agreement on <b>{{agreementSignedDate}}.</b>
+	</div>
+
+	<button class='bottom sign-button' ng-click='clickSignAgreement()' ng-show='!agreementSigned'>
+			This agreement has not yet been signed. To sign it, please click here.
+	</button>
+
+</body>

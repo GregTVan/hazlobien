@@ -1,0 +1,130 @@
+<div ng-controller='manageUsersFormController'>
+
+	<div class='panel-body' ng-show='messages && messages.length > 0'>
+		<div ng-repeat='message in messages' style='color:red'>
+			{{message.message}}
+		</div>
+	</div>
+
+	<table style='margin-left:1vw;margin-top:2vh'>
+		<tr>
+			<td style='vertical-align:top'>
+				<table style='margin-right:2vw;margin-top:1vh'>
+					<tr ng-show='user.role==="super"'>
+						<td>
+							<label>
+								Firm
+							</label>
+						</td>
+					<tr ng-show='user.role==="super"'>
+						<td>
+							<select ng-change='changeFirm(activeRecord.firm)' ng-model='activeRecord.firm' ng-options = 'firm.firm for firm in values.firms'></select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label style='margin-top:1vh'>
+								Name
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type='text' ng-model='activeRecord.name'></input>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label style='margin-top:1vh'>
+								Email
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type='text' ng-model='activeRecord.email'></input>
+						</td>
+					</tr>
+					<tr ng-show='mode!="add" && user.role=="super"'>
+						<td>
+							<label style='margin-top:1vh'>
+								Auth0 ID:
+							</label>
+						</td>
+					</tr>
+					<tr ng-show='mode!="add" && user.role==="super"'>
+						<td>{{activeRecord.userId}}</td>
+					</tr>
+				</table>
+			</td>
+			<td style='vertical-align:top'>
+				<table style='margin-right:2vw;margin-top:1vh'>
+					<tr>
+						<td>
+							<label>
+								Role
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<select ng-model='activeRecord.role' ng-options = 'role.name for role in values.roles'></select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label style='margin-top:1vh'>
+								Language
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<select ng-model='activeRecord.language' ng-options = 'language.name for language in values.languages'></select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input ng-model='activeRecord.resolvedItemTracking' type='checkbox' id='$index'></input>
+							<label style='margin-top:2vh' for='$index'>False Positives</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input ng-disabled='!(activeRecord.firm.eidPlanType != "NONE")' ng-model='activeRecord.eid' type='checkbox' id='$index'></input>
+							<label for='$index'>eID</label>
+						</td>
+					</tr>
+					<tr ng-show='mode=="add" && user.role=="super"'>
+						<td>
+							<input ng-model='activeRecord.sendWelcomeEmail' type='checkbox' id='$index'></input>
+							<label for='$index'>Send Welcome Email</label>
+						</td>
+					</tr>
+					<!-- TODO: only show SSO if Super -->
+					<tr ng-show='user.role=="super"'>
+						<td>
+							<input ng-model='activeRecord.sso' type='checkbox' id='$index'></input>
+							<label for='$index'>SSO</label>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td style='vertical-align:top'>
+				<table style='margin-top:1vh'>
+					<tr ng-repeat='d in activeRecord.dataSets track by $index'>
+						<td>
+							<!-- availability comes from FIRM, not USER, because maybe we change firms -->
+							<input ng-disabled='!d.isAvailableToUser' ng-model='d.isSelectedByUser' type='checkbox' id='$index'></input>
+							<label for='$index'>{{d.dataSetInfo.longLabel}}</label>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+
+	<button ng-click='saveClick()'>{{buttonMessage}}</button>
+	<button ng-click='cancelClick()'>Cancel</button>
+
+</div>

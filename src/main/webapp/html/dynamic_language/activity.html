@@ -1,0 +1,21 @@
+<div ng-controller='activityController'>
+	<div class='col-lg-12'>
+		<div class='row'>
+			<div class='col-lg-8'>
+				<span ng-model="showError" ng-show="showError" style="color:red;line-height:50px">
+					{{errorMessage}}
+				</span>
+			</div>
+		</div>
+		<table class='table table-hover'>
+			<tr>
+				<th translate>APP.ACTIVITY_TABLE.ACTIVITY</th>
+			</tr>
+			<tbody>
+				<tr ng-repeat="d in data track by $index">
+					<td>{{d}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

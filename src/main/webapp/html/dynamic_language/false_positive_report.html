@@ -1,0 +1,33 @@
+<div ng-controller='falsePositiveReportController' collapse-open-listener>
+
+	<h4 class='panel-title' style='cursor: pointer'>
+		<a translate data-toggle='collapse' data-parent='#accordion' data-target='#{{d.key}}'>{{d.title}}</a>
+	</h4>
+
+	<div id='{{d.key}}' class='panel-collapse collapse' style='margin:2vh'>
+
+		<div class='panel-body' ng-show='error' style='padding-left:0px'>
+			<span style='color:red'>
+				{{error}}
+			</span>
+		</div>
+
+		<table style='margin-bottom:2vh'>
+			<tr>
+				<td style='padding-right:2vw'>
+					Output As:
+				</td>
+				<td>
+					<select 
+						ng-model='outputType'
+						ng-options='option.name for option in availableOutputTypes'>
+					</select>
+				</td>
+			</tr>
+		</table>
+				
+		<button translate ng-click="okClick()" class='btn btn-default' type='button'>ADMINISTRATION.SEARCH_ACTIVITY.OK</button>
+
+	</div>
+
+</div>

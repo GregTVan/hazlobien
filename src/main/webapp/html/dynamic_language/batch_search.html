@@ -1,0 +1,72 @@
+<div ng-controller='batchSearchController' collapse-open-listener>
+	<h4 class='panel-title' style='cursor: pointer'>
+		<a translate data-toggle='collapse' data-parent='#accordion' data-target='#{{d.key}}'>{{d.title}}</a>
+	</h4>
+	<div id='{{d.key}}' class='panel-collapse collapse' style='margin-top:20px'>
+		<div class='panel-body'>
+			<span ng-model='showError' ng-show='showError' style='color:red;line-height:50px'>
+				{{error}}
+			</span>
+		</div>
+		<div class='row'>
+			<div class='col-lg-12'>
+				<div class='col-md-4'>
+					<input class='form-control col-lg-1' ng-disabled='searchDisabled' ng-model='email'  class='form-control' placeholder="{{ 'APP.BATCH_SEARCH.EMAIL' | translate }}" type='text'>
+				</div>
+				<div class='col-md-8'>
+					<h5 style='margin-top:8px' translate>APP.BATCH_SEARCH.WHERE_TO</h5>
+				</div>
+				<br>
+				<br>
+				<div class='col-lg-12'>
+					<form action='CanCheck' method='post' enctype='multipart/form-data'>
+						<input ng-disabled='searchDisabled' type='file' file-model='myFile' style='width:400px'/>
+					</form>
+				</div>
+				<br>
+				<br>
+				<div class='col-lg-12'>
+					<div class='form-check'>
+						<input type='checkbox' class='form-check-input' id='outputPdf' ng-model='outputPdf'>
+						<label class='form-check-label' for='outputPdf'>PDF</label>
+					</div>
+				</div>
+				<div class='col-lg-12'>
+					<div class='form-check'>
+						<input type='checkbox' class='form-check-input' id='outputExcel' ng-model='outputExcel'>
+						<label class='form-check-label' for='outputExcel'>Excel</label>
+					</div>
+				</div>
+				<div class='col-lg-12' ng-show='resolvedItemTrackingAvailable'>
+					<div class='form-check'>
+						<input type='checkbox' class='form-check-input' id='resolvedItemTracking' ng-model='resolvedItemTracking'>
+						<label class='form-check-label' for='resolvedItemTracking'>False Positive Tracking</label>
+					</div>
+				</div>
+				<br>
+				<div class='col-lg-12'>
+					<br>
+					<button translate ng-click='batchSearchClick()' ng-disabled='searchDisabled' class='btn btn-default' type='button' style='margin-bottom:20px'>APP.BATCH_SEARCH.OK</button>
+					<button translate ng-click='showDataSetsClick()' ng-disabled='searchDisabled' class='btn btn-default' type='button' style='margin-bottom:20px'>Show Databases</button>
+				</div>
+				<div class='col-lg-12' ng-show='showDataSets'>
+					<div ng-repeat='dataSet in dataSets track by $index'>
+						<div class='checkbox'>
+							<label>
+								<input 
+									ng-model='dataSet.isSelectedByUser'
+									ng-disabled='!dataSet.isAvailableToUser'
+									type='checkbox' 
+									value=''>
+									<div>
+										{{dataSet.dataSetInfo.longLabel}}
+									</div>
+								</input>
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

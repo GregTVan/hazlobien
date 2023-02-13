@@ -1,0 +1,43 @@
+<div class='col-md-8 col-md-offset-2' style='margin-bottom:100px' ng-controller='zohoController'>
+
+    <!-- This started with a file from Zoho but we're not using their HTML because it is too incompatible with ours, both 
+         visually, and in code (they don't use Angular or Bootstrap) and we want to preserve L&F. Well, we're not using
+         BootStrap here either, but we should be and will be later... -->
+
+    <style>
+        tr , td { 
+            padding:6px;
+            border-spacing:0px;
+            border-width:0px;
+        }
+    </style>
+    
+    <span ng-model='showError' ng-show='showError' style='color:red;line-height:50px'>
+        {{error}}
+    </span>
+    
+    <table style='width:600px'>
+        <tr><td colspan='2' style='text-align:left;'><strong>Contactez Nous:</strong></td></tr>
+        <tr><td style='nowrap:nowrap;text-align:right;width:300px;'>Nom de l'Entreprise</td><td style='width:250px;' ><input ng-model='firmName' class='form-control' type='text' style='width:250px;'  maxlength='100' name='Company' /></td></tr>
+        <tr><td style='nowrap:nowrap;text-align:right;width:300px;'>Prénom<span style='color:red;'>*</span></td><td style='width:250px;' ><input ng-model='firstName' class='form-control' type='text' style='width:250px;'  maxlength='40' name='First Name' /></td></tr>
+        <tr><td style='nowrap:nowrap;text-align:right;width:300px;'>Nom de Famille<span style='color:red;'>*</span></td><td style='width:250px;' ><input ng-model='lastName' class='form-control' type='text' style='width:250px;'  maxlength='80' name='Last Name' /></td></tr>
+        <tr><td style='nowrap:nowrap;text-align:right;width:300px;'>Email<span style='color:red;'>*</span></td><td style='width:250px;' ><input ng-model='email' class='form-control' type='text' style='width:250px;'  maxlength='100' name='Email' /></td></tr>
+        <tr><td style='nowrap:nowrap;text-align:right;width:500px;'>Comment pouvons nous aider&#x3f;<span style='color:red;'>*</span> </td><td> <textarea ng-model='message' class='form-control' name='Description' maxlength='1000' style='width:250px;'>&nbsp;</textarea></td></tr>
+        <tr>
+            <td colspan='2' style='text-align:center; padding-top:15px;'>
+                <input class='btn btn-normal' style='font-size:14px;color:#131307' type='submit' value='Submit' ng-click='sendContactToZoho()'/>
+                <input class='btn btn-normal' type='reset' style='font-size:14px;color:#131307' value='Reset'ng-click='resetForm()'/>
+            </td>
+        </tr>
+    </table>
+    
+    <!-- END FROM ZOHO -->
+
+    <br>
+    Contactez-nous pour obtenir des informations sur tous les services de <b>Canchek</b>, y compris les ventes et l'intégration à vos systèmes internes KYC. Appelez-nous au <a href='tel:+14168480870'>416.848.0870</a>.
+    <br><br>
+    Pour demander des informations sur les services de Canchek, y compris les ventes et l'intégration à vos systèmes  interne pour l'obligation de connaître son client (KYC), s'il vous plaît envoyer un courriel <a class='email' href='mailto:sales@canchek.com'>sales@canchek.com</a>.
+    <br><br>
+    Suite 5700, 100 King Street West, Toronto, ON M5X 1C7
+
+</div>

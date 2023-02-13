@@ -1,0 +1,61 @@
+<div ng-controller='manageDocumentsController' collapse-open-listener>
+	<h4 class='panel-title' style='cursor: pointer'>
+		<a translate data-toggle='collapse' data-parent='#accordion' data-target='#{{d.key}}'>{{d.title}}</a>
+	</h4>
+	<div id='{{d.key}}' class='panel-collapse collapse' style='margin-top:20px'>
+		<div class='panel-body'>
+			<span ng-model='showError' ng-show='showError' style='color:red'>
+				{{error}}
+			</span>
+		</div>
+		<div class='col-lg-12'>
+			<br>
+			<div ng-model='showTable' ng-show='showTable'>
+				<div style="margin-bottom:10px">
+					<button ng-click="addClick()" translate>APP.GENERAL.ADD</button>
+					<button ng-click="refreshClick()" translate>APP.GENERAL.REFRESH</button>
+					<select 
+						ng-change='refreshClick()'
+						ng-model='documentType'
+						ng-options='documentType.name for documentType in availableDocumentTypes'>
+					</select>
+					<select 
+						ng-change='refreshClick()'
+						ng-model='language'
+						ng-options='language.name for language in availableLanguages'>
+					</select>
+				</div>
+				<table class='table table-hover'>
+					<tr>
+						<!-- TODO French -->
+						<th>Date</th>
+						<th>File Name</th>
+						<!-- TODO why does it not extend across properly -->
+						<th class='fa fa-trash'>
+					</tr>
+					<tbody>
+						<tr ng-repeat='d in data'>
+							<td>{{d.addedDate}}</td>
+							<td>{{d.fileName}}</td>
+							<td class='fa fa-trash' ng-click='deleteClick($index)'>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div ng-model='showAddForm' ng-show='showAddForm'>
+				<div class='col-md-4'>
+					Please select a file to upload.
+					<br>
+					<br>
+					<input type='file' file-model='myFile' style='width:400px'/>
+					<br>
+					<br>
+					<button ng-click='addOkClick()'><div translate>APP.GENERAL.OK</div></button>
+					<button ng-click='addCancelClick()'><div translate>APP.GENERAL.CANCEL</div></button>
+					<br>
+					<br>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

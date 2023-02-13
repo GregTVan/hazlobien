@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Let's Do Spanish!</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="profile.js"></script>
+<link rel="stylesheet" href="profile.css">
+<style>
+    body {
+        background-color: rgb(219,249,203);
+    }
+    .checkbox-column {
+      width: 14%;
+      float: left;
+      padding: 20px;
+      margin-top: 0px;
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+    .checkbox-column2 {
+      width: 40%;
+      float: left;
+      padding: 20px;
+      margin-top: 0px;
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+    #big-input {
+        margin-left: 5%;
+        width: 85%;
+    }
+    #outer {
+        font-size: 4vh;
+        font-weight: 800;
+        margin-left: 2%;
+        margin-top: 2%;
+    }
+    #inner {
+        font-size: 3vh;
+        margin-top: 1%;
+    }
+    label {
+        font-weight: 400;
+    }
+    .innermost {
+        margin-left: 2vw;
+        margin-top: 0px;
+        padding-top: 0px;
+    }
+    .checkbox-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .checkbox-column-2 {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+  }
+  .checkbox-column-7 {
+    width: 14%;
+    display: flex;
+    flex-direction: column;
+  }
+  input[type="checkbox"] {
+    margin-right: 1vw;
+    margin-bottom: 1em;
+  }
+  input[type="radio"] {
+    margin-top: 2vh;
+  }
+  .inner-radio {
+    margin-top: 2vh;
+  }
+  .inner-radio2 {
+    margin-top: 4vh;
+  }
+</style>
+<script>
+    
+    $(document).ready(function(){
+
+    });
+
+</script>
+</head>
+<body>
+
+    
+    <div id="outer">
+
+        What types of phrases do you want to practice?
+        <div id="inner">
+            
+            <div>
+                <input type="radio" id="option1" name="options" value="Option 1">
+                <label for="option1" id="label1">Show me everything!</label>
+            </div>
+            
+            <div class="inner-radio">
+                <input type="radio" id="option2" name="options" value="Option 2">
+                <label for="option2">Show me phrases with these words:</label>
+                <br>
+                <input type="text" id="big-input"></input>
+            </div>
+                        
+            <div class="inner-radio2">
+                <input type="radio" id="option2" name="options" value="Option 2">
+                <label for="option2">I want to practice phrases from these categories:</label>
+
+                <div class="innermost">
+                    <div class="checkbox-container">
+                        <div class="checkbox-column-2" id="category-col-0"></div>
+                        <div class="checkbox-column-2" id="category-col-1"></div>
+                      </div>
+                </div>
+
+            </div>
+    
+            <div style="clear: both;"></div>
+
+        </div>
+    </div>
+  
+    <div style="clear: both;"></div>
+
+</body>

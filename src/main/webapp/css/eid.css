@@ -1,0 +1,30 @@
+.big {
+	font-size: 52px;
+}
+.digits {
+	width: 20%;
+}
+.image {
+	width: 20%
+}
+.space {
+	margin-bottom: 5vh
+}
+.text {
+	text-align: center;
+	width: 90%
+}
+.x-centered {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.y-centered {
+	margin-bottom: 0;
+	margin-top: 0;
+	position: absolute;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	width: 100%
+}

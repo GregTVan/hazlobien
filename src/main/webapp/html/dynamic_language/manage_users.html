@@ -1,0 +1,12 @@
+<div ng-controller='manageUsersController' collapse-open-listener>
+
+	<h4 class='panel-title' style='cursor: pointer'>
+		<a translate data-toggle='collapse' data-parent='#accordion' data-target='#{{d.key}}'>{{d.title}}</a>
+	</h4>
+
+	<div id='{{d.key}}' class='panel-collapse collapse' style='margin:2vh'>
+		<div ng-show='show!=="table"' ng-include="'html/dynamic_language/manage_users_form.html'"/>
+		<div ng-show='show=="table"'  ng-include="'html/dynamic_language/manage_users_table.html'"/>
+	</div>
+	
+</div>

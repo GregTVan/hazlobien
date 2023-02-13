@@ -1,0 +1,74 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+   background-color:#fff;
+   font-family: 'Open Sans', sans-serif;    
+   font-size:12px;
+}
+
+ul {
+	margin-left:10px;
+	margin-bottom:10px;
+	margin-top:0;
+}
+
+h1 {
+	font-size: 24px;
+}
+
+h2 {
+	font-size:15px;
+}
+
+h3 {
+	font-size:13px;
+}
+
+h4 {
+	font-size:12px;
+}
+
+h5 {
+	font-size:11px;
+}
+
+.home-cta-title {
+	font-size:14px;
+	font-weight:bold;
+}
+
+.home-cta-inner, #home-banner-text, #home-cta-resources {
+	margin-bottom:20px;
+}
+
+#menu, #header, #footer, #banner, #home-bannerimage img {
+	display:none;
+}
+
+#main {
+   width: auto;
+   margin: 0 5%;
+   padding: 0;
+   border: 0;
+   float: none !important;
+   color: #000;
+   background: transparent none;
+   overflow: visible;
+}
+
+#main a:link, #main a:visited {
+   color: #555;
+   background-color: transparent;
+   font-weight: bold;
+   text-decoration: underline;
+}
+
+#main a:link:after, #main a:visited:after {
+   /*content: " (" attr(href) ") ";*/
+   font-size: 90%;
+}
+
+#content {
+    float:none;
+}

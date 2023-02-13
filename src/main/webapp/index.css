@@ -1,0 +1,26 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+.container {
+    background-image: url(images/front_page.png);
+    background-size: 100% 100%;
+    height: 100%;
+}
+.button-holder {
+    background-color: rgb(219,249,203);
+    height: 15vh;
+    margin-left: 50vw;
+    margin-top: 80vh;
+    position: absolute;
+    width: 40vw;
+}
+.button {
+    background-color: transparent;
+    border-style: none;
+    font-size: 5.5vh;
+    font-weight: 1000;
+}
+.after-button {
+    margin-left: 3vw;
+}

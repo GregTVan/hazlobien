@@ -1,0 +1,114 @@
+<div class='col-md-offset-2' ng-controller='signUpController'>
+
+    <div>
+
+        <div class='row'>
+            <div class='col-md-6' translate>
+                Choose an AML Plan:
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-md-6 form-group'>
+                <select class='form-control' ng-model='amlPlanType' ng-change='changeAmlPlanType()'>
+                    <option ng-repeat="amlPlan in amlPlanList" value='{{amlPlan.planType}}'>{{amlPlan.descriptionShort}}</option>
+                </select>          
+            </div>
+            <div class='col-md-6'>
+                <h5 style='margin-top:8px'>{{amlPlanDescriptionLong}}</h5>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div>
+
+        <div class='row'>
+            <div class='col-md-6' translate>
+                Choose an EID Plan:
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-md-6 form-group'>
+                <select class='form-control' ng-model='eidPlanType' ng-change='changeEidPlanType()'>
+                    <option ng-repeat="eidPlan in eidPlanList" value='{{eidPlan.planType}}'>{{eidPlan.descriptionShort}}</option>
+                </select>          
+            </div>
+            <div class='col-md-6'>
+                <h5 style='margin-top:8px'>{{eidPlanDescriptionLong}}</h5>
+            </div>
+        </div>
+        
+    </div>
+
+    <div ng-show='showYourInformation'>
+    
+        <div class='row'>
+            <div class='col-md-6' translate>
+                SIGNUP.YOUR_INFORMATION
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-md-6 form-group'>
+                <input ng-model='firm_name' ng-change='uiChange()' class='form-control' placeholder='{{ "SIGNUP.FIRM_NAME" | translate }}' type='text'>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-md-6 form-group'>
+                <input ng-model='firstName' ng-change='uiChange()' class='form-control' placeholder='{{ "SIGNUP.FIRST_NAME" | translate }}' type='text'>
+            </div>
+        </div>
+        
+        <div class='row'>
+            <div class='col-md-6 form-group'>
+                <input ng-model='lastName' ng-change='uiChange()' class='form-control' placeholder='{{ "SIGNUP.LAST_NAME" | translate }}' type='text'>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-md-6 form-group'>
+                <input ng-model='title' ng-change='uiChange()' class='form-control' placeholder='{{ "SIGNUP.TITLE" | translate }}' type='text'>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-md-6 form-group'>
+                <input ng-model='user_email' ng-change='uiChange()' class='form-control' placeholder='{{ "SIGNUP.USER_EMAIL" | translate }}' type='text'>
+            </div>
+        </div>
+        
+    </div>
+
+    <div ng-show='showPayment'>
+
+        <div class='row'>
+            <div class='col-md-6' translate>
+                SIGNUP.CHARGES
+            </div>
+        </div>
+        
+        <div class ='row'>
+            <div class='col-md-6'>
+                <table class='table tight-table'>
+                    <tr>
+                        <td><h4 translate>SIGNUP.SUBSCRIPTION_FEE</h4></td>
+                        <h4><td align='right'><h4>{{fee | currency}}</h4></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+
+    <button type='submit' class='btn btn-primary' ng-click='signUpClick()' translate>SIGNUP.SUBMIT</button>
+
+    <div class='panel-body'>
+        <span ng-show='error' style='color:red;line-height:50px;font-size:22px'>
+            {{error.message}}
+        </span>
+    </div>
+    
+</div>

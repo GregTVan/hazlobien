@@ -1,0 +1,185 @@
+<div ng-controller='searchController'>          
+    <!-- TODO message if all 3 are empty or if both groups are populated -->
+    <div class='col-lg-8 col-lg-offset-2' style='display:block'>
+        <div class='input-group'>
+            <!-- TODO FRENCH -->
+            <!--
+            <input type='text' class='form-control' ng-change='searchInputChange()' ng-keypress='searchKeyPress($event)' ng-model='clientId' placeholder='Client or Account Identifier'/>
+            -->
+            <input type='text' class='form-control' ng-change='searchInputChange()' ng-keypress='searchKeyPress($event)' ng-model='lastName' placeholder='{{ "APP.SEARCH_INPUT.LAST_NAME" | translate }}'/>
+            <span class='input-group-addon'></span>
+            <input type='text' class='form-control' ng-change='searchInputChange()' ng-keypress='searchKeyPress($event)' ng-model='firstName' placeholder='{{ "APP.SEARCH_INPUT.FIRST_NAME" | translate }}'/>
+            <span class='input-group-btn'>
+                <button class='btn btn-default' ng-click='searchClick($event)' translate type='button'>APP.SEARCH_INPUT.SEARCH</button>
+                <button class='btn btn-default' ng-click='resetClick($event)' translate type='button'>APP.SEARCH_INPUT.RESET</button>
+            </span>
+        </div>
+        <div class='form-group'>
+            <input type='text' class='form-control' ng-change='searchInputChange()' ng-keypress='searchKeyPress($event)' ng-model='entityName' placeholder='{{ "APP.SEARCH_INPUT.ENTITY_NAME" | translate }}'/>
+        </div>
+    </div>
+    
+    <div class='col-lg-12'>
+        <div id='search_output' style='overflow:auto'>
+            <br>
+            <div ng-bind-html='outputLabelLine1'></div>
+            <div ng-bind-html='outputLabelLine2'></div>
+            <span ng-model='printLabel' ng-show='printLabel'>
+                <span translate>
+                    APP.SEARCH_OUTPUT.CLICK
+                </span>
+                <a translate ng-click='printClick()' href='#'>
+                    APP.SEARCH_OUTPUT.HERE
+                </a> 
+                <span translate>
+                    APP.SEARCH_OUTPUT.TO_PRINT
+                </span><br>
+            </span>
+            <br>
+            <table class='table table-hover' ng-model='showWatchListTable' ng-show='showWatchListTable'>
+                <tr>
+                    <th translate>APP.SEARCH_TABLE.NAME</th>
+                    <th translate>APP.SEARCH_TABLE.BIRTH_LOCATION</th>
+                    <th translate>APP.SEARCH_TABLE.ALIASES</th>
+                    <th translate id='regulations_column'>APP.SEARCH_TABLE.REGULATIONS</th>
+                    <th translate>APP.SEARCH_TABLE.OBLIGATIONS</th>
+                    <!-- TODO french -->
+                    <th translate>False Positive</th>
+                </tr>
+                <tbody>
+                    <tr ng-repeat='d in watchListData'>
+                        <td>{{d.name}}</td>
+                        <td>{{d.dateAndPlaceOfBirth}}</td>
+                        <td ng-bind-html='d.aliasesText'></td>
+                        <!-- TODO: make this French friendly -->
+                        <td>
+                            <div ng-repeat='reg in d.regs'>
+                                <a ng-href='regulations/{{language}}/{{reg.url}}' ng-bind-html='reg.text' target='_blank'></a>
+                            </div>
+                        </td>
+                        <td ng-bind-html='d.obligationsText'></td>
+                        <!--<td ng-bind='getIt()'></td>-->
+                        <td style='vertical-align:middle'>
+                            <div style='border-style:solid;font-size:6vh;border-width:1px;height:6vh;width:6vh;border-radius:.5vh' ng-click='toggleFalsePositive()'>
+                                <div style='color:green;vertical-align:top' ng-class="{'fa fa-check':d.falsePositive}"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- TODO: rename SEARCH_TABLE to WATCH_LIST_TABLE -->
+            <div ng-model='showCeaseTradeOrderTable' ng-show='showCeaseTradeOrderTable'>
+                <table class='table table-hover'>
+                    <tr>
+                        <th translate>APP.CEASE_TRADE_ORDER_TABLE.COMPANY_NAME</th>
+                        <th translate>APP.CEASE_TRADE_ORDER_TABLE.ISSUING_JURISDICTIONS</th>
+                        <th translate>APP.CEASE_TRADE_ORDER_TABLE.EFFECTIVE_JURISDICTIONS</th>
+                        <th translate>APP.CEASE_TRADE_ORDER_TABLE.TYPE</th>
+                        <th translate>APP.CEASE_TRADE_ORDER_TABLE.EXPIRY_DATE</th>
+                        <th translate>APP.CEASE_TRADE_ORDER_TABLE.PERSONS</th>
+                    </tr>
+                    <tbody>
+                        <tr ng-repeat='d in ceaseTradeOrderData'>
+                            <td>{{d.companyName}}</td>
+                            <td>{{d.issuingJurisdictionsText}}</td>
+                            <td>{{d.effectiveJurisdictionsText}}</td>
+                            <td>{{d.type}}</td>
+                            <td>{{d.expiryDate}}</td>
+                            <td ng-bind-html='d.personsText'></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- TODO: NAMING! -->
+            <div ng-model='showInsiderTable' ng-show='showInsiderTable'>
+                <table class='table table-hover'>
+                    <tr>
+                        <th translate>APP.INSIDER_TABLE.NAME</th>
+                        <th translate>APP.INSIDER_TABLE.MUNICIPALITY</th>
+                        <th translate>APP.INSIDER_TABLE.ISSUER_NAME</th>
+                    </tr>
+                    <tbody>
+                        <tr ng-repeat='d in insiderData'>
+                            <!-- TODO: set hover -->
+                            <td ng-click='getInsiderDetails($event)' sediId='{{d.sediId}}'>{{d.name}}</td>
+                            <td>{{d.municipality}}</td>
+                            <td ng-bind-html='d.issuers'></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- TODO: NAMING! -->
+            <div ng-model='showDomesticPoliticalPersonTable' ng-show='showDomesticPoliticalPersonTable'>
+                <table class='table table-hover'>
+                    <tr>
+                        <th translate>APP.DOMESTIC_POLITICAL_PERSON_TABLE.NAME</th>
+                        <th translate>APP.DOMESTIC_POLITICAL_PERSON_TABLE.JURISDICTION</th>
+                        <th translate>APP.DOMESTIC_POLITICAL_PERSON_TABLE.ROLE</th>
+                        <th translate>APP.DOMESTIC_POLITICAL_PERSON_TABLE.END_DATE</th>
+                        <th translate>APP.DOMESTIC_POLITICAL_PERSON_TABLE.PHOTO</th>
+                    </tr>
+                    <tbody>
+                        <tr ng-repeat='d in domesticPoliticalPersonData'>
+                            <!-- TODO: set hover -->
+                            <td>{{d.name}}</td>
+                            <td>{{d.jurisdiction}}</td>
+                            <td>{{d.role}}</td>
+                            <td>{{d.endDate}}</td>
+                            <!-- french -->
+                            <td>
+                                <div ng-show='isImage(d.photoUrl);'>
+                                    <img alt='Not Available' src='{{d.photoUrl}}' style='width:100px'></img>
+                                </div>
+                                <div ng-show='isLink(d.photoUrl);'>
+                                    <a href='{{d.photoUrl}}' style='width:100px' target='_blank'>Click Here</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-model='showForeignPoliticalPersonTable' ng-show='showForeignPoliticalPersonTable'>
+                <table class='table table-hover'>
+                    <tr>
+                        <!-- hack to prevent label from wrapping. better to use &nbsp but hassles with Angular sanitization. -->
+                        <th translate style='width:10%' >APP.FOREIGN_POLITICAL_PERSON_TABLE.NAME</th>
+                        <th translate>APP.FOREIGN_POLITICAL_PERSON_TABLE.BIRTH_DATE</th>
+                        <th translate>APP.FOREIGN_POLITICAL_PERSON_TABLE.REMARKS</th>
+                    </tr>
+                    <tbody>
+                        <tr ng-repeat='d in foreignPoliticalPersonData'>
+                            <!-- TODO: set hover -->
+                            <td>{{d.name}}</td>
+                            <td>{{d.birthDate}}</td>
+                            <td>{{d.text}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-model='showOfacTable' ng-show='showOfacTable'>
+                <table class='table table-hover'>
+                    <tr>
+                        <th translate>APP.OFAC_TABLE.NAME</th>
+                        <th translate>APP.OFAC_TABLE.DATE_OF_BIRTH</th>
+                        <th translate>APP.OFAC_TABLE.PLACE_OF_BIRTH</th>
+                        <th translate>APP.OFAC_TABLE.ALIASES</th>
+                        <th translate>APP.OFAC_TABLE.REGULATIONS</th>
+                        <th translate>APP.OFAC_TABLE.REMARKS</th>
+                    </tr>
+                    <tbody>
+                        <tr ng-repeat='d in ofacData'>
+                            <!-- TODO: set hover -->
+                            <!-- TODO: maybe, set all except remarks to nowrap. Verify it's the only one that ever gets big. Test on iPad, etc. -->
+                            <td>{{d.name}}</td>
+                            <td>{{d.dateOfBirth}}</td>
+                            <td>{{d.placeOfBirth}}</td>
+                            <td ng-bind-html='d.aliasesText'></td>                            
+                            <td>{{d.programs}}</td>
+                            <td>{{d.remarks}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,273 @@
+.navbar-brand {
+    padding: 0px;
+}
+
+.navbar-brand > img {
+    height: 12vw;
+    padding: 2vw;
+    width: auto;
+}
+
+#navbar-separator {
+    border-right: 2px solid #6D6E72;
+}
+
+.navbar-tall .navbar-brand {
+    height: 13vw;
+}
+
+#navbar-separator {
+    height: 4.5vw;
+    margin-top: 5vw;
+}
+
+@media screen and (max-width:767px) {
+    .contact-us-navbar {
+        display:none
+    }
+}
+
+.navbar-font {
+    font-size:1.5vw;
+}
+
+.navbar-tall .nav > li > a {
+    padding-top: 6.5vw;
+}
+
+.contact-us-navbar {
+    font-size:1vw
+}
+
+.navbar-tall .navbar-toggle {
+    margin: 25px 15px 25px 0;
+    padding: 10px;
+}
+
+.navbar-alignit .navbar-header {
+    height: 50px;
+    transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+.navbar-alignit .navbar-brand {
+    display: block;
+    height: auto;
+    margin-left: 15px;
+    margin-right: 15px;
+    position: relative;
+    top: 50%;
+    transform: translate(0,-50%);
+}
+
+.navbar-nav>li>.dropdown-menu {
+    z-index: 9999;
+}
+
+/* CanChek overrides (NOT from codepen) */
+
+body {
+    color: #75787B;
+    font-family: "Lato";
+    font-size: 27px;
+    font-weight: 900;
+}
+
+.icon-bar {
+    background-color: white
+}
+
+.child_link_color a {
+    color:#75787B
+}
+
+.footer-separator {
+    display:inline;
+    margin-left:8px;
+    margin-right:8px;
+}
+
+th {
+    background-color: rgba(86, 192, 201, .5); // #56C0C9;
+}
+
+/* for auth0 9 */
+#a0-lock.a0-theme-default .a0-panel .a0-icon-container .a0-image img {
+	height: 90px !important;
+	width: 100px;
+}
+
+/* for auth0 10 (french) */
+.auth0-lock-header-logo {
+	height: 100px !important;
+	width: 100px !important;
+}
+
+#regulations_column {
+    width: 20%
+}
+
+@media screen and (max-width:768px) {
+    #navbar-separator {
+        display: none;
+    }
+}
+
+ul li{
+    list-style-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" width="10" height="20"><circle fill="%2384C6B5" cx="5" cy="5" r="4"/></svg>');
+}        
+
+.canchek-color-bold {
+    color: #84C6B5;
+    font-weight: bold
+}
+
+.jumbotron {
+    background: url(images/jumbo.png) no-repeat center;
+    background-size: cover;
+    min-width: 100%;
+    min-height: 50vh;
+    margin-bottom: 0 !important;
+    display: table;
+}
+
+#jumbotron-header{
+    display: table-cell;
+    vertical-align: middle;
+    margin-left: 10%;
+    margin-right:30%;
+    max-width: 60%;
+}
+
+.navbar-nav > li > a:hover {
+    background-color: white;
+    color: black;
+    font-weight: 1900;
+}
+
+.navbar-nav > li > a:focus {
+    background-color: white;
+    color: #84C6B5;
+    font-weight: 1900
+}
+
+
+/********************************************************/
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+  /*background-color: #f5f5f5;*/
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 60px 15px 0;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+/********************************************************/
+
+.email {
+    color: #84C6B5;
+}
+
+.email:hover {
+    color: #84C6B5;
+}
+
+.upload-list {
+    list-style-type: none
+}
+
+.upload-list li input {
+    margin-right: 10px
+}
+
+.tight-table td {
+    padding: 0px !important;
+    border-top: 0px !important
+}
+
+.fake-button {
+    background-color: #84C6B5;
+    color:black;
+    font-weight: bold;
+    padding:3px 20px 5px 20px
+}
+
+.list-indented {
+    font-size: 16px;
+    padding-left: 2vh
+}
+
+.fa.check-mark {
+    color: #84C6B5;
+    font-size: 2vh;
+    padding-right: 5px;
+    position: relative;
+    top: .4vh;
+}
+
+.list-text td {
+    font-size: 2vh;
+    margin-bottom: 10px
+}
+
+.list-text li {
+    font-size: 3vh;
+    margin-bottom: 10px
+}
+
+.color-bold {
+    color: #84C6B5;
+    font-weight: bold
+}
+
+.plan-box {
+    border-color: #D8D8D8;
+    border-style: solid;
+    border-width: 1px;
+    min-height: 50vh;
+    padding: 5vh;
+    position: relative
+}
+
+.nice-table, .nice-table th, .nice-table td {
+    border-style:solid;
+    border-width:1px;
+    padding: 2px;
+}
+
+.spiral {
+    height: 78px;
+    width: 85px
+}

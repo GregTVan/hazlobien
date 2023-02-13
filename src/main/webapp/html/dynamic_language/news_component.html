@@ -1,0 +1,14 @@
+<div class='col-lg-10 col-lg-offset-1' style='display:block'>
+	<div style='font-size:40px;font-style:bold'>
+		{{caption}}
+	</div>
+	<div style='font-size:14px;margin-bottom:20px;font-style:italic'>
+		{{addedDate}}
+	</div>
+	<div style='font-size:27px;text-align:justify' ng-bind-html='content'>
+		<div ng-show={{fileName}}>
+			<a href={{fileName}}>Click here</a>
+		</div>
+		<br><br>
+	</div>
+</div>

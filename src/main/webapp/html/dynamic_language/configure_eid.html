@@ -1,0 +1,23 @@
+<div ng-controller='configureEidController' collapse-open-listener>
+
+	<h4 class='panel-title' style='cursor: pointer'>
+		<a translate data-toggle='collapse' data-parent='#accordion' data-target='#{{d.key}}'>{{d.title}}</a>
+	</h4>
+
+	<div id='{{d.key}}' class='panel-collapse collapse' style='margin:2vh'>
+		<div class='panel-body' ng-show='messages && messages.length > 0'>
+			<div ng-repeat='message in messages' style='color:red'>
+				{{message.message}}
+			</div>
+		</div>
+		<div ng-show='user.role==="super"' style='margin-bottom:2vh'>
+			<select ng-change='changeFirm(firm)' ng-model='firm' ng-options = 'firm.firm + " (" + firm.name + ")" for firm in firms'></select>
+		</div>
+		<textarea ng-model='data.text' rows='10' cols='100'></textarea>
+		<div style='margin-top:2vh'>
+			<button ng-click='saveClick()'><div translate>Save</div></button>
+			<button ng-click='testClick()'><div translate>Test</div></button>
+		</div>
+	</div>
+
+</div>

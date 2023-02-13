@@ -1,0 +1,47 @@
+<div class='jumbotron' style='min-height:25vh;width:100%;background: url("images/gi_canadian_money_laundry.jpg"); background-size: 100% 100%; background-position:right center; background-repeat: no-repeat'>
+    <div id='jumbotron-header' style='margin-left:10%;width:60%'>
+        <span style='margin-left:10%;color:white'>WELCOME TO CANCHEK</span>
+    </div>
+</div>
+<br>
+<div style='margin-left:10%;margin-right:10%'>
+<div class='col-lg-12'>
+    <div class='col-lg-8'>
+        <span class='canchek-color-bold'>
+            Canada's AML solution.
+        </span>
+        <br><br>
+        Organizations face increased regulatory demands and bear the burden of checking, monitoring and disclosure, all the while remaining competitive. CANCHEK risk intelligence serves the screening needs of both large and small financial institutions and corporations.
+        <div style='color: #84C6B5;font-weight: bold;margin-top:5vh;margin-bottom:5vh'>
+            <span style='font-size:22px'>SANCTIONS – DOMESTIC & INTERNATIONAL PEPs and HIOs - CEASE TRADE ORDERS (CTOs) – INSIDERS (SEDI) – NATIONAL REGISTRATION (NRD) - ADVERSE MEDIA:&nbsp</span>
+            <span style='font-size:28px'>ALL IN ONE PLACE</span>
+        </div>
+        Canchek-eID is a FINTRAC compliant method of remotely identifying clients using patented facial recognition technology.  Canchek supports remote client ID verification using iPhone and Android devices, and standard Internet browsers.  The technology includes document authentication, image matching and liveness testing.
+        <br>
+        <br>
+    </div>
+    <div class='col-lg-4' ng-controller='newsController' style='border-left-style:solid;border-color:#75787B;xheight:50vh;Xmax-height:15vh;overflow:auto;xbackground-color:red;margin-bottom:10vh'>
+        <div class='canchek-color-bold'>
+            Latest News
+        </div>
+        <div ng-repeat='d in news'>
+			<div ng-show='showStory[$index]'>
+				<div style='font-size:14px;margin-top:20px'>
+					{{d.prettyDate}}
+				</div>
+				<a ng-show='showSref(d.contentType)' ui-sref='{{d.stateHandler}}' style='font-size:27px'>
+					{{d.caption}}
+				</a>
+				<a ng-show='showHref(d.contentType)' ng-href='{{d.href}}' style='font-size:27px'>
+					{{d.caption}}
+				</a>
+			</div>
+        </div>
+        <a ng-click='getMoreNewsClick("older")' ng-show='showOlderNewsButton' class='canchek-color-bold' style='font-size:14px;margin-top:20px'>
+            Older
+        </a>
+        <a ng-click='getMoreNewsClick("newer")' ng-show='showNewerNewsButton' class='canchek-color-bold' style='font-size:14px;margin-top:20px'>
+            Newer
+        </a>
+    </div>
+</div>

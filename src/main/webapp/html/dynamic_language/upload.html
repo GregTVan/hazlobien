@@ -1,0 +1,52 @@
+<div ng-controller='uploadController' collapse-open-listener>
+	<h4 class='panel-title' style='cursor: pointer'>
+		<a translate data-toggle='collapse' data-parent='#accordion' data-target='#{{d.key}}'>{{d.title}}</a>
+	</h4>
+	<div id='{{d.key}}' class='panel-collapse collapse' style='margin-top:20px'>
+		<div class='row'>
+			<div class='col-lg-8 col-lg-offset-1'>
+				<br><br><br>
+				<div translate>
+					APP.UPLOAD.INSTRUCTIONS
+				</div>
+				<div style='color:red' ng-repeat='f in feedback track by $index'>
+					{{f}}
+				</div>
+				<br><br>
+				<form action='CanCheck' method='post' enctype='multipart/form-data'>
+					<!-- TODO: fix font, see http://stackoverflow.com/questions/572768/styling-an-input-type-file-button -->
+					<input type='file' file-model='myFile' style='width:400px'/>
+					<br>
+					<br>
+					<div translate>
+						APP.UPLOAD.CONTENT
+					</div>
+					<ol class='upload-list' ng-click='clicked()'>
+						<li><input ng-model='content' type='radio' name='content' value='individuals'><span translate>APP.UPLOAD.WATCHLIST_INDIVIDUAL</span></input></li>
+						<li><input ng-model='content' type='radio' name='content' value='entities'><span translate>APP.UPLOAD.WATCHLIST_ENTITY</span></input></li>
+						<li><input ng-model='content' type='radio' name='content' value='cease_trade_orders'><span translate>APP.UPLOAD.CEASE_TRADE_ORDERS</span></input></li>
+						<li><input ng-model='content' type='radio' name='content' value='disciplined_list'><span translate>Disciplined List</span></input></li>
+						<li><input ng-model='content' type='radio' name='content' value='domestic_political_persons'><span translate>APP.UPLOAD.DOMESTIC_PEPS</span></input></li>
+						<!-- TODO French... scanner for untranslated strings? (extract text nodes and look for items not inside translation file) -->
+						<!-- also a tool to compare the two translation files! -->
+						<!--<li><input ng-model='content' type='radio' name='content' value='domestic_political_persons'><span translate>Domestic PEPs</span></input></li>-->
+					</ol>
+					<br>
+					<div translate>
+						APP.UPLOAD.FORMAT
+					</div>
+					<ol class='upload-list' ng-click='clicked()'>
+						<li><input ng-model='format' type='radio' name='format' value='excel_2007'><span translate>APP.UPLOAD.EXCEL_2007</span></input></li>
+						<li><input ng-model='format' type='radio' name='format' value='csv' checked><span translate>APP.UPLOAD.CSV</span></input></li>
+						<li><input ng-model='format' type='radio' name='format' value='tab_delimited'><span translate>APP.UPLOAD.TAB_DELIMITED</span></input></li>
+					</ol>
+					<br><br>
+					<button translate ng-click='upload()' type='button'>APP.UPLOAD.UPDATE</button>
+					<br>
+					<br>
+					<br>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

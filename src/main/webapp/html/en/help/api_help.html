@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html ng-app="canchek">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Canchek®</title>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7' crossorigin='anonymous'>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css' integrity='sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r' crossorigin='anonymous'>
+        <link rel="stylesheet" type="text/css" href="../../../css/MyFontsWebfontsKit.css">
+        <link  href='../../../css/app.css' rel='StyleSheet' type='text/css'>
+        <!-- Setting the right viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <style>
+            body {
+            padding-top: 70px;
+            }
+            // to make 'File' button look good in BootStrap
+            .btn-file {
+            position: relative;
+            overflow: hidden;
+            }
+            .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+            }        
+        </style>
+        <style>
+            .LogoFont { 
+            font-family: Lato;
+            font-weight: normal;
+            font-style: normal;
+            font-size: 18px;
+            position:relative;
+            left:-48px;
+            color:#75787B
+            <!-- from http://en.labelpartners.com/pantone_coated_table.html PMS Cool Gray 9C" -->
+            }
+            .spiral {
+            height: 78px;
+            width: 85px
+            }
+            a, div, input, li, span, td, th, tr {
+            font-family: AvenirLTStd-Heavy;
+            }
+            // specific to this page
+            pre {
+            font-family:courier
+            }
+            pre > a {
+            font-family: inherit
+            }
+            table, th, td {
+            border-style: solid;
+            border-width: 1px;
+            padding: 5px
+            }
+        </style>
+    </head>
+    <body style='font-size:16px;font-weight:normal;font-family:AvenirLTStd-Heavy;overflow:auto'>
+        <div ng-model='show_body' ng-show='show_body'>
+            <nav class='navbar navbar-default navbar-fixed-top' id='nav' style='background-color:white;background-image:none;border-style:none;box-shadow:none;padding-bottom:10px'>
+                <div class='container-fluid'>
+                    <div id='navbar' class='navbar-collapse collapse'>
+                        <img src="../../../images/spiral_combined.jpg" class="spiral">
+                        <ul class='nav navbar-nav navbar-right'>
+                            <li><a translate ui-sref='search'>API Documentation</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div style='top:100px;left:50px;position:absolute'>
+                <h1>Introduction</h1>
+                This page documents the output of Canchek searches. For details of how to obtain a login and interact with the Canchek API, please see 
+                <!-- updated 2021-04-29 for NRD, UK etc. -->
+                <a href='https://documenter.getpostman.com/view/896892/TzK2bEVi'>our Postman page</a>.
+                <h1>Search Results</h1>
+                A Canchek search may return data from any of Canchek's seven databases, as listed below. Users may elect to search any combination of these databases. This election must be
+                made in the web UI (there is no public API for this); selections are defined on a user by user basis, and apply to all forms of search (web UI, batch files, and this API).
+                If a database is selected but has no search results, it will be included in the output JSON as an empty array. If a database is not selected, it will not be included in the
+                output JSON at all. The following is a representative (but fictional) search result.
+                <br>
+                <br>
+                <pre>
+{
+    "ceaseTradeOrderResult": [
+        {
+            "exception": true,
+            "failureToFile": false,
+            "issuedDate": "2007-12-31",
+            "persons": [
+                "MOBUTU BEDIAKO"
+            ],
+            "effectiveJurisdictions": [
+                "BC"
+            ],
+            "issuingJurisdictions": [
+                "BC"
+            ],
+            "companyName": "General",
+            "status": "Issued",
+            "type": "Ban Securities Trading BY"
+        },    
+    ],
+    <a href='#domesticPoliticalPersonResult'>["domesticPoliticalPersonResult": [</a>
+        {
+            <a href='#domesticPoliticalPersonResult.falsePositive'>"falsePositive": false,</a>
+            "firstName": "Bediako",
+            "photoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcDfEENU84kfuw-EcVBVu7onWN0I2at1vmzks3gJ0L4UZELxI0dQ",
+            "jurisdiction": "Canadian House of Commons, Azania",
+            "lastName": "Mobutu",
+            "role": "MP",
+            "ref": "CAH-0348"
+        }
+    ],
+    "globalPoliticalPersonResult": [
+        {
+            "falsePositive": false,
+            "birthDate": "25/12/1971",
+            "firstName": "Bediako",
+            "lastName": "Mobuto-Tseke",
+            "ref": "S6P1185091",
+            "text": "Presidents of African Countries; President of Azania"
+        },
+        {
+            "falsePositive": false,
+            "birthDate": "",
+            "firstName": "Bediako Astana Bandu",
+            "lastName": "Mobuto Tseke",
+            "ref": "S10P977",
+            "text": "Member of Organization of African States"
+        }
+    ],
+    "insiderResult": [
+        {
+            "falsePositive": false,
+            "issuerName": [
+                "Shining Path Energy Ltd.",
+                "Bogotan Products Inc."
+            ],
+            "municipality": "Calgary",
+            "name": "Mobutu, B",
+            "ref": "MOBU123"
+        }
+    ],
+    "officeForeignAssetsControlResult": [
+        {
+            "falsePositive": false,
+            "aliases": [
+                "AL-KHATAB, Abd  Al Rahman",
+                "MOHAMMED, Al-Basher",
+                "AL-FAQI, Bashir Mohammed Ibrahim",
+                "ALBASHIR, Mohammed",
+                "ISMAIL, Mohammed",
+                "AL-BASHIR, Muhammad",
+                "ABU ABD AL-RAHMAN",
+                "ABU KHALID",
+                "ABU MOHAMMED",
+                "MAHMUD",
+                "MUSTAFA"
+            ],
+            "dateOfBirth": "15 Dec 1959",
+            "name": "AL-FAQIH, Abd al-Rahman",
+            "placeOfBirth": "Libya",
+            "programs": "SDGT",
+            "ref": "9595"
+        },
+    ],
+    "ukResult":[
+        {
+            "falsePositive":false,
+            "aliases":[
+                "Abbas, Sidiki",
+                "Bi Sidi, Souleymane",
+                "Soulemane, Bi Sidi"
+            ],
+            "dateOfBirth":"20/07/1962",
+            "name":"Souleman, Bi Sidi",
+            "nationality":"Central African Republic",
+            "otherInformation":"(UN Ref): CFi.014",
+            "ref":"13912",
+            "regime":"Central African Republic"
+        }
+    ],
+    "watchListResult": [
+       {
+            "falsePositive": false,
+            "aliases": [
+                {
+                    "dateOfBirth": "11-Nov-60, 67 or 69 or 1969",
+                    "name": "MOBUTU, Aboud Rogo",
+                    "placeOfBirth": "Lamu Island, Kenya"
+                },
+            ],
+            "obligations": [
+                "Asset Freeze",
+                "Determine",
+                "Report to RCMP"
+            ],
+            "regulations": [
+                "2010-84@Eritrea.pdf"
+            ],
+            "sanctions": [
+                "UN Resolutions on Eritrea"
+            ],
+            "dateOfBirth": "11-Nov-60, 67 or 69 or 1968",
+            "name": "MOBUTO, BED",
+            "placeOfBirth": "",
+            "ref": "SOi-011"
+        },
+    ]
+}
+</pre>
+                <h1 id='commonFields'>Common Fields</h1>
+                Several fields are common to one or more databases. These are documented here. Fields specific to a particular database are listed separately.
+                <table>
+                    <tr id='domesticPoliticalPersonResult.falsePositive'>
+                        <th>Field</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>falsePositive</td>
+                        <td>Indicates that this record has been flagged as a false positive. This designation is made by Canchek customers when a match is suggested but subsequently determined to not be relevant. In general, false positives can safely be ignored.</td>
+                    </tr>
+                    <tr>
+                        <td>firstName</td>
+                        <td>Names are in general mixed-case but case standards may vary depending on source data. They may, and often do, contain characters outside the North American A-Z alphabet.</td>
+                    </tr>
+                    <tr>
+                        <td>lastName</td>
+                        <td>See above.</td>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>See above. Some databases differentiate last name from first name, others do not.</td>
+                    </tr>
+                    <tr>
+                        <td>ref</td>
+                        <td>Most Canchek databases include a reference code that we use to uniquely identify each record. These codes may be managed by Canchek, third-party vendors, or government sources. The format varies from database to database. Reference codes will never be reassigned.</td>
+                    </tr>
+                </table>
+                <h1 id='ceaseTradeOrderResult'>ceaseTradeOrderResult</h1>
+                This database lists individuals and entities recorded in the CSA Cease Trade Order system. The quality of this data is somewhat lower than in other databases, and for this reason false positives are more likely.
+                <table>
+                    <tr id='domesticPoliticalPersonResult.falsePositive'>
+                        <th>Field</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>exception</td>
+                        <td>TBD</td>
+                    </tr>
+                    <tr>
+                        <td>failureToFile</td>
+                        <td>CTO was implemented due to a failure to meet CSA filing requirements.</td>
+                    </tr>
+                    <tr>
+                        <td>issuedDate</td>
+                        <td>When the CTO was originally issued</td>
+                    </tr>
+                    <tr>
+                        <td>persons</td>
+                        <td>The persons and/or entities named in the CTO. This may include many entries and is not structured.</td>
+                    </tr>
+                    <tr>
+                        <td>effectiveJurisdictions</td>
+                        <td>The provinces and territories in which the CTO is effective. This field recognizes reciprocal CTO arrangements.</td>
+                    </tr>
+                    <tr>
+                        <td>issuingJurisdictions</td>
+                        <td>The provinces and territories in which the CTO was issued.</td>
+                    </tr>
+                    <tr>
+                        <td>companyName</td>
+                        <td>The name of the relevant company.</td>
+                    </tr>
+                    <tr>
+                        <td>status</td>
+                        <td>The CTO's current status in the CSA CTO database.</td>
+                    </tr>
+                    <tr>
+                        <td>type</td>
+                        <td>'Trading BY' (the issue is with the named individuals or entity, they generally aren't allowed to trade anything) or 'Trading OF' (the issue is with the named issuing company, generally nobody is allowed to trade it).</td>
+                    </tr>
+                </table>
+                <h1 id='domesticPoliticalPersonResult'>domesticPoliticalPersonResult</h1>
+                This database lists all Canadian residents/citizens who qualify as a Politically Exposed Person. This data is maintained by Canchek Corp.
+                <table>
+                    <tr id='domesticPoliticalPersonResult.falsePositive'>
+                        <th>Field</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>photoUrl</td>
+                        <td>Link to a photo of the subject person. Various image formats may appear here. The quality of this link is not verified by Canchek Corp.</td>
+                    </tr>
+                    <tr>
+                        <td>jurisdiction</td>
+                        <td>Area of influence (riding, municipality, tribe etc.)</td>
+                    </tr>
+                    <tr>
+                        <td>role</td>
+                        <td>Job title or function (President, Minister, Chief etc.)</td>
+                    </tr>
+                </table>
+                <h1 id='globalPoliticalPersonResult'>globalPoliticalPersonResult</h1>
+                This database lists worldwide (including Canadian) persons who qualify as Politically Exposed Persons. This data is maintained by a third-party vendor.
+                <table>
+                    <tr id='domesticPoliticalPersonResult.falsePositive'>
+                        <th>Field</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>birthDate</td>
+                        <td>Generally supplied in DD/MM/YYYY format, but this may vary.</td>
+                    </tr>
+                    <tr>
+                        <td>text</td>
+                        <td>A free-format description of the individual's role (eg. President) and area of influence (eg. Spain).</td>
+                    </tr>
+                </table>
+                <h1 id='insiderResult'>insiderResult</h1>
+                This database lists insiders recorded on CSA's SEDI database. Note that the Canchek UI exposes additional fields from this data that are not available in this API.
+                <table>
+                    <tr id='domesticPoliticalPersonResult.falsePositive'>
+                        <th>Field</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>issuerName</td>
+                        <td>An insider may be related to one or more issuers. Issuers are generally Canadian private or public companies.</td>
+                    </tr>
+                    <tr>
+                        <td>municipality</td>
+                        <td>Where the insider resides.</td>
+                    </tr>
+                </table>
+                <h1 id='officeForeignAssetsControlResult'>officeForeignAssetsControlResult</h1>
+                This database lists insiders recorded on the USA OFAC system. Many records from this database may also appear on Canchek's Canadian Sanctions database.
+                <table>
+                    <tr id='domesticPoliticalPersonResult.falsePositive'>
+                        <th>Field</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>aliases</td>
+                        <td>The name of known aliases may be provided.</td>
+                    </tr>
+                    <tr>
+                        <td>placeOfBirth</td>
+                        <td>May be a specific location or a country.</td>
+                    </tr>
+                    <tr>
+                        <td>programs</td>
+                        <td>The sanctions program under which this person or entity's name appears. These codes are maintained by OFAC.</td>
+                    </tr>
+                </table>
+                <h1 id='ukResult'>ukResult</h1>
+                This database lists people or entities who appear on United Kingdom terrorist (or similar) watch lists. Many records from this database will overlap those of OFAC. This database is maintained by the British government.
+                <table>
+                    <tr id='ukResult.falsePositive'>
+                        <th>Field</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>aliases</td>
+                        <td>The name, date of birth and place of birth of known aliases may be provided.</td>
+                    </tr>
+                    <tr>
+                        <td>dateOfBirth</td>
+                        <td>Generally supplied in YYYY/MM/D format, but this may vary.</td>
+                    </tr>
+                    <tr>
+                        <td>nationality</td>
+                        <td>Generally the commonly used name of the country.</td>
+                    </tr>
+                    <tr>
+                        <td>otherInformation</td>
+                        <td>Generally a reference to UN sanctions.</td>
+                    </tr>
+                    <tr>
+                        <td>regime</td>
+                        <td>Generally a reference to the sanctions program.</td>
+                    </tr>
+                </table>
+                <h1 id='watchListResult'>watchListResult</h1>
+                This database lists people or entities who appear on Canadian terrorist (or similar) watch lists. Many records from this database will overlap those of OFAC. This database is maintained by Canchek Corp.
+                <table>
+                    <tr id='domesticPoliticalPersonResult.falsePositive'>
+                        <th>Field</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>aliases</td>
+                        <td>The name, date of birth and place of birth of known aliases may be provided.</td>
+                    </tr>
+                    <tr>
+                        <td>obligations</td>
+                        <td>Indicates the reporting requirements if a valid match is found.</td>
+                    </tr>
+                    <tr>
+                        <td>placeOfBirth</td>
+                        <td>May be a specific location or a country.</td>
+                    </tr>
+                    <tr>
+                        <td>regulations</td>
+                        <td>Regulations under which this person or entity's name appears.</td>
+                    </tr>
+                    <tr>
+                        <td>sanctions</td>
+                        <td>Sanctions applicable to this individual or entity.</td>
+                    </tr>
+                </table>
+                <h1>Errors</h1>
+                Errors encountered while processing a request will be returned with HTTP status code 200 and a JSON object describing the problem. The structure of this object is shown below.
+                <br>
+                <br>
+                <pre>
+{
+    "messages": [
+        "Please enter both a first name and a last name."
+    ]
+}
+                </pre>
+                
+            </div>
+        </div>
+    </body>
+</html>

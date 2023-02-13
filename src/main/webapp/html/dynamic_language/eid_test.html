@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="canchek">
+<head>
+    <meta charset="utf-8"/> 
+    <title>Canchek EID Test</title>
+	<script type='module'>
+
+// URL of the server running the identity_api container
+const serverURL = "https://demo.canchek.com:8080"
+
+// Import the ID capture module
+import { IdCapture, IdCaptureSettings, IdCaptureSessionSettings, DocumentPages } from "http://demo.canchek.com:8081/node_modules/@appliedrecognition/ver-id-browser/index.js"
+
+// Settings
+const resourcesURL = "node_modules/@appliedrecognition/ver-id-browser/resources/"
+const yourLicenceKey = "sRwAAAYQZGVtby5jYW5jaGVrLmNvbTnJB6NGnL5j+yHv8Id58sTiU5S1nSnfVrkmqJISrqqZhYAWBRBj2ikXQNIXTsWaq5xogmRr556F86LIe3AR4gIpgcH8lz4G61HAVWRDu4qEO+rB1YcMI22HARhgq7A+9Fos9rZeJRmXGAKcSy5GAcdYloNKKNzJML8Rb7oKrFoVmXSXCECdGTzaN2OOsoooWqY6R5XotAGftn6Nz3UlMGco574SvPB8";
+const settings = new IdCaptureSettings(yourLicenceKey, resourcesURL, serverURL)
+const pages = DocumentPages.FRONT_AND_BACK // Scan the front and back of an ID
+const sessionTimeout = 60000 // Session will time out after 1 minute
+const saveCapturedImages = true // Save original images before they were cropped and deskewed
+const sessionSettings = new IdCaptureSessionSettings(pages, sessionTimeout, saveCapturedImages)
+
+// Create an instance of the IdCapture class
+const idCapture = new IdCapture(settings)
+console.log(idCapture);
+// Capture ID card
+idCapture.captureIdCard().subscribe({
+    next: (result) => {
+        if (result.pages != DocumentPages.BACK && result.face) {
+            // You can use the detected face for face recognition
+        }
+    },
+    error: (error) => {
+        // ID capture failed
+    },
+    complete: () => {
+        // ID capture finished
+        // If not result has been emitted it indicates that the session was cancelled
+    }
+})
+
+	</script>
+</head>
+<body>
+	Welcome to Canchek EID!
+</body>
+</html>

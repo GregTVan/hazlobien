@@ -1,0 +1,12 @@
+<div ng-controller='administrationController'>
+    <div class='col-lg-12'>
+        <h2 translate>ADMINISTRATION.TITLE</h2>
+        <div class='panel-group' id='accordion'>
+            <div class='panel panel-default'>
+                <div ng-repeat='d in administrationOptions' class='panel-heading'>
+					<ng-include src='getURL(d.htmlFileName)'></ng-include>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

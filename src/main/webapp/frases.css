@@ -1,0 +1,56 @@
+html, body {
+    background-color: rgb(219,249,203);
+    height: 100%;
+    margin: 0;
+}
+.input-holder {
+    margin-left: auto;
+    margin-top: 45vh;
+}
+.input {
+    border-radius: 1vh;
+    font-size: 3vh;
+    height: 5vh;
+    width: 6vw;
+}
+#es {
+    height: 5vh;
+    text-align: center;
+    width: 100%;
+}
+#en {
+    font-size: 2.5vh;
+    font-style: italic;
+    height: 5vh;
+    text-align: center;
+    width: 100%;
+}
+#feedback {
+    color: red;
+    height: 5vh;
+    text-align: center;
+    width: 100%;
+}
+#button-holder {
+    text-align: center;
+    width: 100%;
+}
+#answer {
+    font-size: 2.5vh;
+    font-weight: 400;
+    height: 5vh;
+    text-align: center;
+    width: 100%;
+}
+.top-right {
+    margin-right: 2vw;
+    margin-top: 2vh;
+    text-align: right;
+}
+#logout {
+    margin-left: 3vw;
+}
+.borderless {
+    background-color: transparent;
+    border-style: none;
+}

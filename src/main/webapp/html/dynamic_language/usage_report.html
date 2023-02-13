@@ -1,0 +1,50 @@
+<div ng-controller='usageReportController' collapse-open-listener>
+	<h4 class='panel-title' style='cursor: pointer'>
+		<a translate data-toggle='collapse' data-parent='#accordion' data-target='#{{d.key}}'>{{d.title}}</a>
+	</h4>
+	<div id='{{d.key}}' class='panel-collapse collapse' style='margin-top:20px'>
+		<div class="panel-body">
+			<span ng-model="showError" ng-show="showError" style="color:red;line-height:50px">
+				{{error}}
+			</span>
+		</div>
+		<div class='row'>
+			<div class='col-lg-3'>
+				<div class='col-lg-8'>
+					<input class='form-control col-lg-1' ng-model="from_date"  class='form-control' placeholder='{{ "ADMINISTRATION.SEARCH_ACTIVITY.FROM_DATE" | translate }}' type='text'>
+					<br>
+					<input class='form-control col-lg-1' ng-model="to_date"    class='form-control' placeholder='{{ "ADMINISTRATION.SEARCH_ACTIVITY.TO_DATE" | translate }}' type='text'>
+				</div>
+				<table style='margin-bottom:2vh;margin-left:1vw;margin-top:15vh'>
+					<tr>
+						<td style='padding-right:2vw'>
+							Firm:
+						</td>					
+						<td>
+							<select
+								ng-model='firm' 
+								ng-options='firm.name for firm in firms'>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td style='padding-right:2vw'>
+							Output As:
+						</td>
+						<td>
+							<select 
+								ng-model='outputType'
+								ng-options='option.name for option in availableOutputTypes'>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<div class='col-lg-12'>
+					<br>
+					<button translate ng-click="searchActivityClick()" class='btn btn-default' type='button' style='margin-bottom:20px'>ADMINISTRATION.SEARCH_ACTIVITY.OK</button>
+					<br>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

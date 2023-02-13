@@ -1,0 +1,130 @@
+<div ng-controller='eidController'>
+
+	<div class='panel-body'>
+		<span ng-model='showError' ng-show='showError' style='color:red;line-height:50px'>
+			{{error}}
+		</span>
+	</div>
+
+	<div class='col-lg-12'>
+
+		<div ng-model='showTable' ng-show='showTable && !eidDisabled'>
+	
+			<br>
+
+			<div style='margin-bottom:10px'>
+				<button ng-click='addClick()' translate>APP.GENERAL.ADD</button>
+				<button ng-click='refreshRequestsClick()' translate>APP.GENERAL.REFRESH</button>
+			</div>
+
+			<table class='table table-hover'>
+				<thead>
+					<tr>
+						<th>Last Name</th>
+						<th>First Name</th>
+						<th>Email</th>
+						<th>Client ID</th>
+						<th>PIN</th>
+						<th>Documents<br>Verified?</th>
+						<th>Liveness<br>Verified?</th>
+						<th>Name Match<br>Verified?</th>
+						<th>Face Match<br>Confidence %</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat-start='d in requestData track by $index'>
+						<td>{{d.lastName}}</td>
+						<td>{{d.firstName}}</td>
+						<td>{{d.email}}</td>
+						<td>{{d.clientId}}</td>
+						<td>{{d.pin}}</td>
+						<td>{{d.scannedDocument ? 'Yes' : 'No'}}</td>
+						<td>{{d.passedLiveness ? 'Yes' : 'No'}}</td>
+						<td>{{d.namesMatched ? 'Yes' : 'No'}}</td>
+						<td>{{d.confidence}}</td>
+						<td>
+							<div class='dropdown'>
+								<button class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'>
+									Actions
+									<span class='caret'></span>
+								</button>
+								<ul class='dropdown-menu'>
+									<li style='list-style-image:none;cursor:pointer'><a ng-click='toggleActivityClick($index)'>Show Activity</a></li>
+									<li style='list-style-image:none;cursor:pointer'><a ng-click='getReportClick($index)'>Print Report</a></li>
+									<li style='list-style-image:none;cursor:pointer'><a ng-click='archiveClick($index)'>Archive Request</a></li>
+									<li style='list-style-image:none;cursor:pointer' ng-class="{disabled: !getIsResendEmailEnabled($index)}"><a ng-click='initiateResendEmail($index)'>Resend Email</a></li>
+								</ul>
+							</div>						
+						</td>
+					</tr>
+					<tr ng-show='showConfirmResendEmailRow[$index]'>
+						<td colspan=9>
+							<table style='margin:auto;width:50%'>
+								<tbody>
+									<tr>
+										<td>
+											<span style='color:red'>
+												Click here to resend eID request email to '{{d.email}}':
+											</span>
+											<button ng-click='confirmResendEmailClick($index)'>Confirm</button>
+											<button ng-click='cancelResendEmailClick($index)'>Cancel</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr ng-repeat-end ng-show='showActivityRow[$index]'>
+						<td colspan=9>
+							<table style='margin:auto;width:50%'>
+								<thead>
+									<tr>
+										<th style='line-height:4vh;padding-left:.5vw'>
+											Activity
+											<button ng-click='refreshActivityClick($index)' translate style='line-height:2vh;margin-left:5vw'>APP.GENERAL.REFRESH</button>
+											<button ng-click='toggleActivityClick($index)' style='line-height:2vh'>Close</button>
+										</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat='e in d.activity'>
+										<td>{{e.formattedResponse}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+		</div>
+		
+		<div ng-model='showAddForm' ng-show='showAddForm'>
+		
+			<div class='col-md-4'>
+			
+				<div style='background-color:rgba(86, 192, 201, .5);margin-bottom:2vh;line-height:4vh;padding-left:.5vw'>Add New eID Request</div>
+			
+				<input class='form-control col-lg-1' style='margin-bottom:2vh' type='text' ng-model='lastName' placeholder='Last Name'>
+				
+				<input class='form-control col-lg-1' style='margin-bottom:2vh' type='text' ng-model='firstName' placeholder='First Name'>
+				
+				<input class='form-control col-lg-1' style='margin-bottom:2vh' type='text' ng-model='email' placeholder='Email'>
+				
+				<input class='form-control col-lg-1' style='margin-bottom:2vh' type='text' ng-model='clientId'   placeholder='Client ID'>
+				
+				<button ng-click='addOkClick()' translate>APP.GENERAL.OK</button>
+				
+				<button ng-click='addCloseClick()' translate>Close</button>
+				
+				<br>
+				<br>
+
+			</div>
+
+		</div>
+		
+	</div>
+		
+</div>

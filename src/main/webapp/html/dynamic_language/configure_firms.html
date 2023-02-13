@@ -1,0 +1,159 @@
+<div ng-controller='configureFirmsController' collapse-open-listener>
+	<h4 class='panel-title' style='cursor: pointer'>
+		<a translate data-toggle='collapse' data-parent='#accordion' data-target='#{{d.key}}'>{{d.title}}</a>
+	</h4>
+	<div id='{{d.key}}' class='panel-collapse collapse' style='margin-top:20px'>
+		<div class='panel-body'>
+			<span ng-show='error' style='color:red'>
+				{{error}}
+			</span>
+		</div>
+		<div class='col-lg-12'>
+			<div ng-show='showTable'>
+				<div style='margin-bottom:10px'>
+					<button ng-click='addClick()' translate>APP.GENERAL.ADD</button>
+					<button ng-click='refreshClick()' translate>APP.GENERAL.REFRESH</button>
+					<select 
+						ng-change='refreshClick()'
+						ng-model='filterOn'
+						ng-options='filter.name for filter in availableFilters'>
+					</select>
+				</div>
+				<table class='table table-hover'>
+					<tr>
+						<th translate>APP.CONFIGURE_FIRMS.FIRM_ID</th>
+						<th translate>APP.CONFIGURE_FIRMS.NAME</th>
+						<th translate>Agreement Date</th>
+						<th translate>AML Plan Type</th>
+						<th translate>Canchek-eID Plan Type</th>
+						<th>Adverse Media</th>
+						<th translate>APP.CONFIGURE_FIRMS.FOREIGN_PEPS</th>
+						<th class='fa fa-edit'></th>
+						<!--<th class='fa fa-trash'></th>-->
+					</tr>
+					<tbody>
+						<tr ng-repeat='d in data track by $index'>
+							<td>{{d.firm}}</td>
+							<td>{{d.name}}</td>
+							<td>{{d.agreementDate}}</td>
+							<td>{{d.amlPlanType.name}}</td>
+							<td>{{d.eidPlanType.name}}</td>
+							<td>{{d.adverseMediaUsed}} / {{d.adverseMediaLimit}}</td>
+							<!-- controller converts simple value into object for drop-down -->
+							<td>{{d.foreignPoliticalPersons.value ? 'Yes' : 'No'}}</td>
+							<td ng-click='changeClick($index)' class='fa fa-edit'></td>
+							<!-- <td ng-click='deleteClick($index)' class='fa fa-trash'></td> -->
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div ng-show='!showTable'>
+				<div class='col-lg-12' style='margin-bottom:1vh'>
+					<div class='col-lg-2'>
+						<label>Firm ID</label>
+						<input class='form-control col-lg-1' type='text' ng-model='formData.firm' ng-readonly='formMode !== "ADD"'/>
+					</div>
+					<div class='col-lg-2'>
+						<label>AML Plan Type</label>
+						<select class='form-control'
+							ng-model='formData.amlPlanType'
+							ng-options='option.name for option in availableAmlPlanTypes'>
+						</select>
+					</div>
+					<div class='col-lg-2'>
+						<label>Canchek-eID Plan Type</label>
+						<select class='form-control'
+							ng-model='formData.eidPlanType'
+							ng-options='option.name for option in availableEidPlanTypes'>
+						</select>
+					</div>
+				</div>
+				<div class='col-lg-12' style='margin-bottom:1vh'>
+					<div class='col-lg-2'>
+						<label>Name</label>
+						<input class='form-control col-lg-1' type='text' ng-model='formData.name'/>
+					</div>
+					<div class='col-lg-2'>
+						<label>AML Start Date</label>
+						<input class='form-control col-lg-1' type='text' ng-model='formData.amlStartDate'/>
+					</div>
+					<div class='col-lg-2'>
+						<label>EID Start Date</label>
+						<input class='form-control col-lg-1' type='text' ng-model='formData.eidStartDate'/>
+					</div>
+				</div>
+				<div class='col-lg-12' style='margin-bottom:1vh'>
+					<div class='col-lg-2'>
+						<label>Agreement Date</label>
+						<input class='form-control col-lg-1' type='text' ng-model='formData.agreementDate'/>
+					</div>
+					<div class='col-lg-2'>
+						<label>Adverse Media Limit</label>
+						<input class='form-control col-lg-1' type='text' ng-model='formData.adverseMediaLimit'/>
+					</div>
+				</div>
+				<div class='col-lg-12' style='margin-bottom:1vh'>
+					<div class='col-lg-1'>
+						<label>Active</label>
+					</div>
+					<div class='col-lg-1'>
+						<select 
+							ng-model='formData.active'
+							ng-options='option.name for option in availableYesNoOptions'
+							ng-readonly='formMode !== "ADD"'>
+						</select>
+					</div>
+					<div class='col-lg-2'>
+						<label>Adverse Media Used</label>
+						<input class='form-control col-lg-1' type='text' ng-model='formData.adverseMediaUsed'/>
+					</div>
+				</div>
+				<div class='col-lg-12' style='margin-bottom:1vh'>
+					<div class='col-lg-2 col-lg-offset-2'>
+						<label>Adverse Media Qualifiers</label>
+						<input class='form-control col-lg-1' type='text' ng-model='formData.adverseMediaQualifiers'/>
+					</div>
+				</div>
+				<div class='col-lg-12' style='margin-bottom:1vh'>
+					<div class='col-lg-1 col-lg-offset-2'>
+						<label>Global PEPs</label>
+					</div>
+					<div class='col-lg-1'>
+						<select 
+							ng-model='formData.foreignPoliticalPersons'
+							ng-options='option.name for option in availableYesNoOptions'>
+						</select>
+					</div>
+				</div>
+				<div class='col-lg-12' style='margin-bottom:1vh'>
+					<div class='col-lg-1 col-lg-offset-2'>
+						<label>False Positives</label>
+					</div>
+					<div class='col-lg-1'>
+						<select 
+							ng-model='formData.resolvedItemTracking'
+							ng-options='option.name for option in availableYesNoOptions'>
+						</select>
+					</div>
+				</div>
+				<div class='col-lg-12' style='margin-bottom:1vh'>
+					<div class='col-lg-1 col-lg-offset-2'>
+						<label>Log Names</label>
+					</div>
+					<div class='col-lg-1'>
+						<select 
+							ng-model='formData.logQueryNames'
+							ng-options='option.name for option in availableYesNoOptions'>
+						</select>
+					</div>
+				</div>
+				<div class='col-lg-12' style='margin-bottom:2vh'>
+					<div class='col-lg-2'>
+						<button ng-click='formSaveClick()'><div translate>Save</div></button>
+						<button ng-click='formCancelClick()'><div translate>APP.GENERAL.CANCEL</div></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,68 @@
+<div ng-controller='manageUsersTableController'>
+
+	<div style='margin-bottom:2vh'>
+		<button ng-disabled='uiDisabled' ng-click='addClick()'>Add</button>
+		<button ng-disabled='uiDisabled' ng-click='refreshClick()'>Refresh</button>
+		<select
+			ng-change='changeFirm()' 
+			ng-disabled='uiDisabled' 
+			ng-model='firm' 
+			ng-options = 'firm.firm + " (" + firm.name + ")" for firm in firms'
+			ng-show='user.role=="super"'>
+		</select>
+	</div>
+
+	<div class='panel-body' ng-show='messages && messages.length > 0' style='padding:0px;margin-top:0vh;margin-bottom:2vh'>
+		<div ng-repeat='message in messages' style='color:red'>
+			{{message.message}}
+		</div>
+	</div>
+
+	<table class='table table-hover' ng-show='data && data.length > 0'>
+		<tr>
+			<th ng-show='user.role==="super"' translate>APP.CONFIGURE_USERS.FIRM</th>
+			<th translate>APP.CONFIGURE_USERS.NAME</th>
+			<th translate>APP.CONFIGURE_USERS.EMAIL</th>
+			<th translate>APP.CONFIGURE_USERS.ROLE</th>
+			<th ng-show='user.role==="super"' translate>Auth0 ID</th>
+			<th><i class='fa fa-align-justify'></i></th>
+			<th><i class='fa fa-edit'></i></th>
+			<th><i class='fa fa-trash'></i></th>
+		</tr>
+		<tbody>
+			<tr ng-repeat-start='d in data track by $index'>
+				<td ng-show='user.role==="super"'>{{d.firm.firm}}</td>
+				<td>{{d.name}}</td>
+				<td>{{d.email}}</td>
+				<td>{{d.role.name}}</td>
+				<td ng-show='user.role==="super"'>{{d.userId}}</td>
+				<td ng-click='rowClick($index, "log")'><i class='fa fa-align-justify'></i></td>
+				<td ng-click='rowClick($index, "change")'><i class='fa fa-edit'></i></td>
+				<td ng-click='rowClick($index, "delete")'><i class='fa fa-trash'></i></td>
+			</tr>
+			<tr ng-repeat-end ng-show='showRow[$index]'>
+				<td colspan=8>
+					<table style='margin:auto;width:50%'>
+						<thead>
+							<tr>
+								<th style='line-height:4vh;padding-left:.5vw;width=100%' colspan=3>
+									Activity
+									<button ng-click='refreshActivityClick($index)' translate style='line-height:2vh;margin-left:5vw'>APP.GENERAL.REFRESH</button>
+									<button ng-click='rowClick($index, "log")' style='line-height:2vh'>Close</button>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat='e in d.activity'>
+								<td style='width:1px;white-space:nowrap;padding-right:.5vw'>{{e.formattedTimeStamp}}</td>
+								<td style='width:1px;white-space:nowrap;padding-right:.5vw'>{{e.userNameResponsible}}</td>
+								<td>{{e.formattedActivity}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+</div>
