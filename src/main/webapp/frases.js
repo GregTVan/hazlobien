@@ -54,8 +54,6 @@ $(document).ready(function(){
     $('#answer').hide();
 
     var logRespuesta = function(correct, frasePtr, resp) {
-        console.log(frasePtr);
-        console.log(frases[frasePtr]);
         var body = {
             correct: correct,
             en: frases[frasePtr].en,

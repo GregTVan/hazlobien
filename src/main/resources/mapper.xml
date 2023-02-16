@@ -40,13 +40,33 @@ https://stackoverflow.com/questions/64133767/how-to-map-string-to-postgresql-arr
 		)
 	</insert>
 
+	<resultMap id="preferencesMap" type="com.hazlobien.Preferences">
+    	<result property="categories" column="categories" typeHandler="com.hazlobien.StringArrayTypeHandler" jdbcType="ARRAY"/>
+    	<result property="words" column="words" typeHandler="com.hazlobien.StringArrayTypeHandler" jdbcType="ARRAY"/>
+	</resultMap>
+	
+	<select id='selectPreferences' parameterType="String" resultMap="preferencesMap">
+        SELECT * FROM preferences WHERE userId = #{userId}
+    </select>
+
 	<insert id='insertPreferences' parameterType='com.hazlobien.Preferences'>
 		INSERT INTO preferences (
-			categories
+			categories,
+			mode
+			userId
  		) VALUES (
-			#{categories, javaType=String[], jdbcType=OTHER, typeHandler=com.hazlobien.StringArrayTypeHandler}
+			#{categories, javaType=String[], jdbcType=OTHER, typeHandler=com.hazlobien.StringArrayTypeHandler},
+			#{mode},
+			#{userId}
 		)
 	</insert>
 
+	<insert id='updatePreferences' parameterType='com.hazlobien.Preferences'>
+		UPDATE preferences
+			SET categories = #{categories, javaType=String[], jdbcType=OTHER, typeHandler=com.hazlobien.StringArrayTypeHandler},
+				mode = #{mode},
+				words = #{words, javaType=String[], jdbcType=OTHER, typeHandler=com.hazlobien.StringArrayTypeHandler}
+			WHERE userId = #{userId}
+	</insert>
 
 </mapper>

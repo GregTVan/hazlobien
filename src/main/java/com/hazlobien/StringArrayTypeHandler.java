@@ -24,19 +24,31 @@ public class StringArrayTypeHandler implements TypeHandler<String[]> {
 
     @Override
     public String[] getResult(ResultSet rs, String columnName) throws SQLException {
-        Array array = rs.getArray(columnName);
-        return (String[]) array.getArray();
+    	Array array = rs.getArray(columnName);
+        if(array != null) {
+        	return (String[]) array.getArray();
+        } else {
+        	return new String[0];
+        }
     }
 
     @Override
     public String[] getResult(ResultSet rs, int columnIndex) throws SQLException {
         Array array = rs.getArray(columnIndex);
-        return (String[]) array.getArray();
+        if(array != null) {
+        	return (String[]) array.getArray();
+        } else {
+        	return new String[0];
+        }
     }
 
     @Override
     public String[] getResult(CallableStatement cs, int columnIndex) throws SQLException {
         Array array = cs.getArray(columnIndex);
-        return (String[]) array.getArray();
+        if(array != null) {
+        	return (String[]) array.getArray();
+        } else {
+        	return new String[0];
+        }
     }
 }
