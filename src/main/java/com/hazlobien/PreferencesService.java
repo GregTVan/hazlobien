@@ -25,6 +25,10 @@ public class PreferencesService {
 		}
 	}
 	
+	
+	// TODO: warn if selected preferences result in zero phrases
+	// TODO: warn if no input (eg. no words, categories selected)
+	// TODO: warn or filter out punctuation, numbers in words
 	@POST
 	public void post(Preferences preferences) throws ServletException, IOException {
 		String tempId = "temp-user";

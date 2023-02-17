@@ -22,6 +22,24 @@ https://stackoverflow.com/questions/64133767/how-to-map-string-to-postgresql-arr
         SELECT * FROM frase
     </select>
 
+	<insert id='insertFrase' parameterType='com.hazlobien.Frase'>
+		INSERT INTO frase (
+			categories,
+			en,
+			es,
+			expect
+ 		) VALUES (
+ 			#{categories, javaType=String[], jdbcType=OTHER, typeHandler=com.hazlobien.StringArrayTypeHandler},
+			#{en},
+			#{es},
+ 			#{expect, javaType=String[], jdbcType=OTHER, typeHandler=com.hazlobien.StringArrayTypeHandler}
+		)
+	</insert>
+	
+	<delete id='deleteAllFrases'>
+		DELETE FROM frase;
+	</delete>
+
 	<insert id='insertRespuesta' parameterType='com.hazlobien.Respuesta'>
 		INSERT INTO respuesta (
 			correct,

@@ -1,6 +1,7 @@
 package com.hazlobien;
 
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,38 @@ public class FraseService {
 	public List<Frase> get() throws ServletException, IOException {
 		try (SqlSession session = MyBatisConnectionFactory.getSqlSessionFactory().openSession()) {
 			List<Frase> ret = session.selectList("selectFrases");
+			ret = filterPhrases(ret);
+			return ret;
+		}
+	}
+	
+	private List<Frase> filterPhrases(List<Frase> in) {
+		String tempId = "temp-user";
+		try (SqlSession session = MyBatisConnectionFactory.getSqlSessionFactory().openSession()) {
+			Preferences preferences = session.selectOne("selectPreferences", tempId);
+			if(preferences.mode.equals("ALL")) {
+				return in;
+			}
+			List<Frase> ret = new ArrayList<Frase>();
+			if(preferences.mode.equals("CATEGORIES")) {
+				for(Frase frase : in) {
+					for(String s0: frase.categories) { 
+						for(String s1 : preferences.categories) {
+							if(s0.equalsIgnoreCase(s1)) {
+								ret.add(frase);
+							}
+						}
+					}
+				}
+				return ret;
+			}
+			if(preferences.mode.equals("WORDS")) {
+				return ret;
+			}
+			if(ret.size() == 0) {
+				System.out.println(MessageFormat.format("User {0} has no selectable phrases, return ALL", tempId));
+				ret = in;
+			}
 			return ret;
 		}
 	}
