@@ -1,11 +1,20 @@
 $(document).ready(function(){
     
+    var accessToken = new URL(window.location.href).hash.split('=')[1].split('&')[0];
     var frases;
     var frase_ptr = 0;
     
-    $.get("rest/frases", function(data, status){
+    /*$.get("rest/frases", function(data, status){
         frases = data;
         showPhrase();
+    });*/
+    
+    $.ajax({
+        headers: {
+			 'Authorization': accessToken
+		},
+		type: 'GET',
+        url: 'rest/frases'
     });
 
     var showPhrase = function() {
@@ -63,9 +72,12 @@ $(document).ready(function(){
         };
         $.ajax({
             contentType:"application/json; charset=utf-8",
-            type: 'POST',
             data: JSON.stringify(body),
             dataType: 'json',
+            headers: {
+				 'Authorization': accessToken
+			},
+			type: 'POST',
             url: 'rest/respuesta'
         });
     }
