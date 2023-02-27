@@ -9,6 +9,7 @@ public class Respuesta {
 	public long fraseId;
 	public long id;
 	public String respuesta;
+	public String userId;
 
 	public long getId() {
 		return id;
@@ -51,6 +52,12 @@ public class Respuesta {
 	}
 	public void setCorrect(boolean correct) {
 		this.correct = correct;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	
 }

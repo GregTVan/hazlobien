@@ -1,14 +1,14 @@
 package com.hazlobien;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 
 import javax.servlet.ServletException;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import org.apache.ibatis.session.SqlSession;
@@ -18,10 +18,10 @@ public class PreferencesService {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Preferences get() throws ServletException, IOException {
-		String tempId = "temp-user";
+	public Preferences get(@Context ContainerRequestContext containerRequestContext) throws ServletException, IOException {
+		String userId = new Auth0Decoder().getUserId(containerRequestContext);
 		try (SqlSession session = MyBatisConnectionFactory.getSqlSessionFactory().openSession()) {
-			return session.selectOne("selectPreferences", tempId);
+			return session.selectOne("selectPreferences", userId);
 		}
 	}
 	

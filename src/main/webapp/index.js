@@ -1,7 +1,7 @@
 var auth0 = new auth0.WebAuth({
     domain: 'hazlobien.us.auth0.com',
     clientID: 'dkbexIr2vpwUcMgEuuHhcrmqdC2xi2kX',
-    redirectUri: 'http://localhost:8080/amleid/frases.html',
+    redirectUri: 'http://204.13.49.88/frases.html',
     responseType: 'token id_token',
     scope: 'openid'
 });
@@ -10,8 +10,6 @@ function login() {
     console.log('here');
     var email = $('#email').val();
     var password = $('#password').val();
-    console.log(email);
-    console.log(password);
     auth0.login({
       callback_url: 'http://localhost/frases.html',
       realm: 'Username-Password-Authentication',

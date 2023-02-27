@@ -47,14 +47,16 @@ https://stackoverflow.com/questions/64133767/how-to-map-string-to-postgresql-arr
 			en,
 			es,
 			expect,
-			respuesta
+			respuesta,
+			user_id
  		) VALUES (
  			#{correct},
 			#{fraseId},
 			#{en},
 			#{es},
 			#{expect},
-			#{respuesta}
+			#{respuesta},
+			#{userId}
 		)
 	</insert>
 
