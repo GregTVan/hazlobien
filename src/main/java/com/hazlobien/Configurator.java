@@ -1,7 +1,8 @@
 package com.hazlobien;
 
+import javax.ws.rs.ApplicationPath;
+
 import org.glassfish.jersey.jackson.JacksonFeature;
-import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 
 /*
@@ -9,6 +10,7 @@ import org.glassfish.jersey.server.ResourceConfig;
  * https://howtodoinjava.com/jersey/jersey-file-upload-example/
  */
 
+@ApplicationPath("/rest")
 public class Configurator extends ResourceConfig {
 	public Configurator() {
 		//register(AuthorizationFilter.class);
@@ -16,6 +18,7 @@ public class Configurator extends ResourceConfig {
 		// via a javax.ws.rs parameter in web.xml. Otherwise, Jersey WILL
 		// work but custom serializers will NOT work, even if they are
 		// correctly annotated. Before, the serializer was enough.
+		packages("com.hazlobien");
 		register(JacksonFeature.class);
 		//register(MultiPartFeature.class);
 	}

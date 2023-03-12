@@ -1,0 +1,41 @@
+body {
+	align-items: center;
+	background-color:rgb(143,204,247);
+	display: flex;
+	height: 100vh; /* ?WTF */
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+}
+
+button, input, select {
+	border-radius: 5px;
+	font-size: 25px;
+	margin: 5px;
+	padding: 2px;
+}
+
+input, select {
+	width: 45vw;
+}
+
+span {
+	border-radius: 5px;
+	color: red;
+	font-family: Arial;
+	font-size: 25px;
+	margin: 5px;
+	padding: 2px;
+}
+
+.blurb {
+	font-family: Arial;
+	font-size: 25px;
+}
+
+.container {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}

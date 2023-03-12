@@ -1,27 +1,11 @@
 $(document).ready(function(){
-    
- /*
- https://204.13.49.88/frases.html
- #access_token=eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9oYXpsb2JpZW4udXMuYXV0aDAuY29tLyJ9..naHC3pBWH-FgxYgK.wDkcp8t1LqML4hnj6DiLtmHOWOaTlCHBIja5tvtsAqnD7GBsJ2I51ESNDQ57SfRpyN00RcR0LDTOHV-d__Zg5b-oh4-VaMpTYpGArG7iBs1iONTyxLo_2WRXMKAmODFBXARRFAOExRYxWTbLYIQvYSqT5OEAkOWoUWaCQHZQQV9X-Z1Mxlm0cMzOAxlZVqNrCZqIace1zRugAaMw-LB9_tSn_B0il6O3_u7RaNs9q9fMTbKWwjHA-nTdxLth8heMGS2EsIOkTpSDypJZ_kPrrEpJ_pOQ_uXqJL7AO8tu.wkiVe6CXxxMT9FpKPqqGhQ
- &scope=openid
- &expires_in=7200
- &token_type=Bearer
- &state=0XcA2z9l9FGuYz2J-wbUhk5RXla2GlKK
- &id_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkFvdmlDaTRnQy1jUEtwa0ZpNlFkdCJ9.eyJpc3MiOiJodHRwczovL2hhemxvYmllbi51cy5hdXRoMC5jb20vIiwiYXVkIjoiZGtiZXhJcjJ2cHdVY01nRXV1SGhjcm1xZEMyeGkya1giLCJpYXQiOjE2Nzc0Njc3MTksImV4cCI6MTY3NzUwMzcxOSwic3ViIjoiYXV0aDB8NjNmYTg3NWEzOGIxZjcwNmE1MGNiNjkzIiwiYXRfaGFzaCI6IlIwbVc1TmNRYUhyVjgzWUhOaXVQQXciLCJzaWQiOiJERkVQQWN0M2YyOFZpZHNhekZGWVJmN1YyVzF3VHI5bSIsIm5vbmNlIjoicGxuLlM5flh0dm9HbnpoRXpLbl9NLUlJZ3BEb3lBWmgifQ.bG0asqWEof9Mig2T1J7IVxKvSnwZZtTvHFxKb9cYLWEuFJrQc-wkXR7HHZFUH7fm2Maf_Qsmk1xykyb4mFsct9rGfCEPKKIajTHYr0EQpIzUfHpzxrhaoOJgxZBJWLGg6UxoqriRbAZQdEZYkLlJfpS5ci8NiHN3BL87TXthK-5qEdOMVosQltRVaLdNe23gnTrPsDyhn3zijOcm1k3IZ1QzJTQgIKBa-scweMet3rRqba4v0dbTDvyMB4U60eAA_5DUXY-5J_kAiB2l8OIbMP8zEP6A301P-JxPvUWVYRfm9qDP9C-0Eda89qnJPafIa2qUUvjUrALquZgVBEACVQ 
- 
- */
-    
-    var accessToken = window.location.hash.split('#')[1].split('&')[5].split('=')[1];
-    
+	
+	//checkIsAuthenticated(); /* from auth.js */
+	
     var frases;
     var frase_ptr = 0;
     
-    /*$.get("rest/frases", function(data, status){
-        frases = data;
-        showPhrase();
-    });*/
-    console.log('wth');
-    $.ajax({
+    /*$.ajax({
         headers: {
 			 'Authorization': accessToken
 		},
@@ -32,7 +16,7 @@ $(document).ready(function(){
 		},
 		type: 'GET',
         url: 'rest/frases'
-	});
+	});*/
 
     var showPhrase = function() {
         var es = frases[frase_ptr].es;
@@ -75,6 +59,10 @@ $(document).ready(function(){
         $('#answer').text(ans);
         $('#answer').show();
         $('#show-answer').text("Go to next phrase");
+    });
+    
+    $('#logout').click(function() {
+		logout(); // from auth.js
     });
 
     $('#answer').hide();

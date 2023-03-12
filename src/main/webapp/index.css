@@ -1,26 +1,36 @@
+button, href {
+	background-color:rgb(143,204,247);
+	border-style: none;
+	font-family: Arial;
+	font-size: 20px;
+	margin-right: 3vw;
+}
+
 html, body {
+	background-color:rgb(143,204,247);
     height: 100%;
     margin: 0;
 }
-.container {
-    background-image: url(images/front_page.png);
-    background-size: 100% 100%;
-    height: 100%;
+
+img {
+	 margin-left: 20%;
+	 width:60%;
 }
-.button-holder {
-    background-color: rgb(219,249,203);
-    height: 15vh;
-    margin-left: 50vw;
-    margin-top: 80vh;
-    position: absolute;
-    width: 40vw;
+
+p {
+	font-size: 20px;
+	text-align: justify
 }
-.button {
-    background-color: transparent;
-    border-style: none;
-    font-size: 5.5vh;
-    font-weight: 1000;
+
+.buttons {
+	float: right;
+	margin-right: 3vw;
+	margin-top: 3vh
 }
-.after-button {
-    margin-left: 3vw;
+
+.text-div {
+	font-family: Arial;
+	margin-left: 10vw;
+	margin-right: 10vw;
+	margin-top: 5vh
 }

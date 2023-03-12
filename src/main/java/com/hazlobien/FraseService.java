@@ -31,7 +31,8 @@ public class FraseService {
 	}
 	
 	private List<Frase> filterPhrases(List<Frase> in, ContainerRequestContext containerRequestContext) {
-		String userId = new Auth0Decoder().getUserId(containerRequestContext);
+		//String userId = new Auth0Decoder().getUserId(containerRequestContext);
+		String userId = ""; // WTF WTF
 		try (SqlSession session = MyBatisConnectionFactory.getSqlSessionFactory().openSession()) {
 			Preferences preferences = session.selectOne("selectPreferences", userId);
 			if(preferences.mode.equals("ALL")) {
