@@ -25,12 +25,6 @@ class Session {
 	public String sessionId;
 }
 
-class User {
-	public String email;
-	public long id;
-	public String password;
-}
-
 @Path("/auth")
 public class UserService {
 	

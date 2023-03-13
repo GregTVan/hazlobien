@@ -34,13 +34,23 @@ public class SignUpService {
 		System.out.println(signUpRequest.email);
 		System.out.println(signUpRequest.password);
 		Auth0CreateUserReply auth0CreateUserReply = new Auth0Wrapper().createUser(signUpRequest.email, signUpRequest.password);
-		// HANDLE DUPE EMAIL, WEAK PASSWORD, INVALID EMAIL
-		try (SqlSession session = MyBatisConnectionFactory.getSqlSessionFactory().openSession()) {
+		if (auth0CreateUserReply.success) {
+			User user = new User();
+			user.auth0Id = auth0CreateUserReply.userId;
+			user.email = signUpRequest.email;
+			try (SqlSession session = MyBatisConnectionFactory.getSqlSessionFactory().openSession()) {
+				int sqlReply = session.insert("insertUser", user);
+				if(sqlReply > 0) {
+					ret.message = "Your user has been created.";
+					ret.success = true;
+				}
+				session.commit();
+			}
+		} else {
 			ret.message = auth0CreateUserReply.message;
-			ret.success = auth0CreateUserReply.success;
-			return ret;
+			ret.success = false;
 		}
+		return ret;
 	}
-
 	
 }

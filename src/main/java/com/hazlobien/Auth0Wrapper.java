@@ -104,7 +104,6 @@ public class Auth0Wrapper {
 		} else {
 			String id = idrec.user_id;
 			if (id.length() > 5) {
-				ret.message = "Your user has been created.";
 				ret.success = true;
 				ret.userId = id;
 			} else {
